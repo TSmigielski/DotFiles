@@ -77,6 +77,7 @@ alias h="history"
 alias bc="bc -q"
 alias cal="cal -w"
 alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
+alias ...="cd ../.."
 
 # Eza
 alias eza="eza --git"
