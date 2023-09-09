@@ -1,0 +1,24 @@
+[global]
+    monitor = 1
+    font = Fira Mono 10
+    corner_radius = 9
+    frame_width = 2
+
+
+[urgency_low]
+    background = "#1e1e1e"
+    foreground = "#ededed"
+
+[urgency_normal]
+    background = "#0070C5"
+    foreground = "#ededed"
+
+[urgency_critical]
+    background = "#e98200"
+    foreground = "#ededed"
+
+
+[slack]
+    appname = "Slack"
+    summary = "*"
+    script = ~/Utilities/dunst-urgent-notification.sh

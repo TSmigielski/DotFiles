@@ -1,0 +1,85 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Prompt theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Syntax highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Auto-suggestion
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd completion)
+
+# Auto-complete
+autoload -Uz compinit; compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select
+_comp_options+=(globdots)
+
+# Alt navigation
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+bindkey '^[[3;3~' kill-word
+bindkey '^[^?' backward-kill-word
+
+# Vim stuff
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -a '^[[3~' delete-char
+bindkey '^[[3~' delete-char
+bindkey -v
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+autoload -U history-search-end
+#zle -N history-beginning-search-backward-end history-search-end
+#zle -N history-beginning-search-forward-end history-search-end
+#bindkey "^[[A" history-beginning-search-backward-end
+#bindkey "^[[B" history-beginning-search-forward-end
+bindkey '^R' history-incremental-search-backward
+
+# Misc
+setopt auto_cd
+
+# Env
+export PATH=$PATH:~/.local/bin
+export EDITOR=nvim
+export VISUAL=nvim
+export KEYTIMEOUT=1
+export TERM=xterm-256color
+export DOTNET_CLI_UI_LANGUAGE=en
+
+### Aliases ###
+# Git
+source ~/.zsh/omz.git.plugin.zsh
+
+# General
+alias sudo="sudo "
+alias vim="nvim"
+alias so="source"
+alias h="history"
+alias bc="bc -q"
+alias cal="cal -w"
+alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
+
+# Eza
+alias eza="eza --git"
+alias ls="eza --icons"
+alias l="eza -laF"
+alias ll="eza -laFG"
