@@ -64,10 +64,12 @@ export VISUAL=nvim
 export KEYTIMEOUT=1
 export TERM=xterm-256color
 export DOTNET_CLI_UI_LANGUAGE=en
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 ### Aliases ###
 # Git
 source ~/.zsh/omz.git.plugin.zsh
+alias gf="gfa"
 
 # General
 alias sudo="sudo "
@@ -78,6 +80,8 @@ alias bc="bc -q"
 alias cal="cal -w"
 alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
 alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # Eza
 alias eza="eza --git"
