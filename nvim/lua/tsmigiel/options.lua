@@ -8,6 +8,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.opt.ignorecase = true
 vim.opt.smartindent = true
 
 vim.opt.swapfile = false
@@ -26,3 +27,9 @@ vim.opt.isfname:append "@-@"
 vim.opt.updatetime = 50
 
 vim.opt.mouse = ""
+
+
+vim.opt.breakindent = true
+vim.opt.signcolumn = "auto"
+vim.opt.completeopt = "menuone,noselect"
+vim.o.termguicolors = true

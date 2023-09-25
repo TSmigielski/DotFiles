@@ -1,2 +1,2 @@
-require("tsmigiel.remap")
-require("tsmigiel.set")
+require('tsmigiel/options')
+require('tsmigiel/mappings')
