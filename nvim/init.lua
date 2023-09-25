@@ -94,12 +94,13 @@ require('lazy').setup({
     -- Theme
     'Mofiqul/vscode.nvim',
     priority = 1000,
-    opt = {
+    opts = {
       transparent = true,
-      italic_comments = true
+      italic_comments = true,
     },
-    config = function()
-      vim.cmd.colorscheme 'vscode'
+    config = function(_, opts)
+      require('vscode').setup(opts)
+      require('vscode').load()
     end,
   },
 
