@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Prompt theme
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Syntax highlighting
@@ -71,7 +71,6 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 source ~/.zsh/omz.lib.git.zsh
 source ~/.zsh/omz.git.plugin.zsh
 alias gf="gfa"
-
 # General
 alias sudo="sudo "
 alias vim="nvim"
