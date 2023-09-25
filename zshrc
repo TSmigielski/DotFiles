@@ -68,6 +68,7 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 ### Aliases ###
 # Git
+source ~/.zsh/omz.lib.git.zsh
 source ~/.zsh/omz.git.plugin.zsh
 alias gf="gfa"
 
