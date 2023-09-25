@@ -109,8 +109,8 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'vscode',
+        icons_enabled = true,
+        theme = 'codedark',
         component_separators = '|',
         section_separators = '',
       },
