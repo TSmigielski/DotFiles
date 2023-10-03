@@ -56,6 +56,7 @@ bindkey '^R' history-incremental-search-backward
 
 # Misc
 setopt auto_cd
+source /usr/share/nvm/init-nvm.sh
 
 # Env
 export PATH=$PATH:~/.local/bin
