@@ -59,7 +59,7 @@ setopt auto_cd
 source /usr/share/nvm/init-nvm.sh
 
 # Env
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/.cargo/bin
 export EDITOR=nvim
 export VISUAL=nvim
 export KEYTIMEOUT=1
