@@ -72,6 +72,7 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 source ~/.zsh/omz.lib.git.zsh
 source ~/.zsh/omz.git.plugin.zsh
 alias gf="gfa"
+
 # General
 alias sudo="sudo "
 alias vim="nvim"
@@ -89,3 +90,6 @@ alias eza="eza --git"
 alias ls="eza --icons"
 alias l="eza -laF"
 alias ll="eza -laFG"
+
+# Other
+alias nightlight="redshift -x && redshift -O $1"
