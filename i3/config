@@ -90,6 +90,9 @@ for_window [class="Slack" title="[Hh]uddle"] move to workspace $ws8
 exec spotify
 assign [class="Spotify"] $ws10
 
+# Godot game window
+for_window [instance="Godot_Engine"] floating enable
+
 # Workspace switching
 bindsym $mod+q workspace $ws1
 bindsym $mod+w workspace $ws2
