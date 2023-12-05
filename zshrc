@@ -14,29 +14,29 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Auto-suggestion
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd completion)
 
 # Auto-complete
 autoload -Uz compinit; compinit
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' menu select
+zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}" "r:|=*" "l:|=* r:|=*"
+zstyle ":completion:*" menu select
 _comp_options+=(globdots)
 
 # Alt navigation
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
-bindkey '^[[3;3~' kill-word
-bindkey '^[^?' backward-kill-word
+bindkey "^[[3;3~" kill-word
+bindkey "^[^?" backward-kill-word
 
 # Vim stuff
 zmodload zsh/complist
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -a '^[[3~' delete-char
-bindkey '^[[3~' delete-char
+bindkey -M menuselect "h" vi-backward-char
+bindkey -M menuselect "k" vi-up-line-or-history
+bindkey -M menuselect "l" vi-forward-char
+bindkey -M menuselect "j" vi-down-line-or-history
+bindkey -a "^[[3~" delete-char
+bindkey "^[[3~" delete-char
 bindkey -v
 autoload -Uz edit-command-line
 zle -N edit-command-line
@@ -52,7 +52,7 @@ autoload -U history-search-end
 #zle -N history-beginning-search-forward-end history-search-end
 #bindkey "^[[A" history-beginning-search-backward-end
 #bindkey "^[[B" history-beginning-search-forward-end
-bindkey '^R' history-incremental-search-backward
+bindkey "^R" history-incremental-search-backward
 
 # Misc
 setopt auto_cd
