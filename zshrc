@@ -61,7 +61,11 @@ bindkey "^R" history-incremental-search-backward
 
 # Misc
 setopt auto_cd
-source /usr/share/nvm/init-nvm.sh
+
+# NVM
+if [[ -r /usr/share/nvm/init-nvm.sh ]]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
 
 # Env
 export PATH=$PATH:~/.local/bin:~/.cargo/bin
