@@ -23,6 +23,19 @@ zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}" "r:|=*" "l:|=* r:|=*"
 zstyle ":completion:*" menu select
 _comp_options+=(globdots)
 
+# Vim stuff
+bindkey -v # Needs to be before any other keybind change
+zmodload zsh/complist
+bindkey -M menuselect "h" vi-backward-char
+bindkey -M menuselect "k" vi-up-line-or-history
+bindkey -M menuselect "l" vi-forward-char
+bindkey -M menuselect "j" vi-down-line-or-history
+bindkey -a "^[[3~" delete-char
+bindkey "^[[3~" delete-char
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Alt navigation
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
@@ -32,19 +45,6 @@ bindkey "^[^?" backward-kill-word
 # Home/End
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
-
-# Vim stuff
-zmodload zsh/complist
-bindkey -M menuselect "h" vi-backward-char
-bindkey -M menuselect "k" vi-up-line-or-history
-bindkey -M menuselect "l" vi-forward-char
-bindkey -M menuselect "j" vi-down-line-or-history
-bindkey -a "^[[3~" delete-char
-bindkey "^[[3~" delete-char
-bindkey -v
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
 
 # History
 HISTFILE=~/.zsh_history
