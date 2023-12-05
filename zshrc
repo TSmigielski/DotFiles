@@ -29,6 +29,10 @@ bindkey "^[[1;3D" backward-word
 bindkey "^[[3;3~" kill-word
 bindkey "^[^?" backward-kill-word
 
+# Home/End
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
 # Vim stuff
 zmodload zsh/complist
 bindkey -M menuselect "h" vi-backward-char
