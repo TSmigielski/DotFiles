@@ -1,7 +1,11 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
+
 vim.opt.wrap = false
+vim.opt.linebreak = true
+vim.opt.list = true
+vim.opt.listchars = "tab:> ,trail:-,nbsp:+,extends:~,precedes:~"
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -22,6 +26,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 12
+vim.opt.sidescrolloff = 16
 vim.opt.isfname:append "@-@"
 
 vim.opt.updatetime = 50
