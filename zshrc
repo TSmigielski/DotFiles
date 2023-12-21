@@ -102,3 +102,7 @@ alias ll="eza -laFG"
 
 # Other
 alias nightlight="redshift -x && redshift -O $1"
+
+
+### Local file
+source ~/.config/zsh_local
