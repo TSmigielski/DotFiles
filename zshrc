@@ -106,4 +106,6 @@ alias cmatrix="cmatrix -abu6"
 
 
 ### Local file
-source ~/.config/zsh_local
+if [[ -r ~/.config/zsh_local ]]; then
+  source ~/.config/zsh_local
+fi
