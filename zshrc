@@ -103,6 +103,7 @@ alias ll="eza -laFG"
 # Other
 alias nightlight="redshift -x && redshift -O $1"
 alias cmatrix="cmatrix -abu6"
+alias waybar="killall waybar; waybar"
 
 
 ### Local file
