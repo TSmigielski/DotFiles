@@ -1,0 +1,112 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin": "10 10 0 10",
+    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-center": ["memory", "cpu", "temperature", "network"],
+    "modules-right": ["custom/weather", "pulseaudio", "backlight", "battery", "clock"],
+
+    "mpris": {
+        "interval": 1,
+        "dynamic-len": 40,
+        "dynamic-importance-order": ["title", "position", "length", "artist", "album"],
+        "format": "▶ {dynamic}",
+        "format-paused": "⏸ <i>{dynamic}</i>"
+    },
+
+    "custom/updates": {
+        "format": "{} ",
+        "interval": 3600, // every hour
+        "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l", // # of updates
+        "exec-if": "exit 0", // always run; consider advanced run conditions
+        "on-click": "foot sh -c 'paru; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8,
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 10,
+        "format": "{percentage}% ",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": " {usage}%",
+    },
+
+    "temperature": {
+        "interval": 5,
+        "critical-threshold": 65,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false
+    },
+
+    "network": {
+        "interval": 5,
+        "format": "",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰌘",
+        "format-disconnected": "Disconnected 󰌙",
+        "tooltip": false
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/wttr.py",
+        "return-type": "json"
+    },
+
+    "pulseaudio": {
+        "reverse-scrolling": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "󰸈",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "default": ["󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "max-volume": 150,
+        "tooltip": false
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+        "tooltip": false
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% {icon} 󱐋",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+        "on-update": "$HOME/.config/waybar/scripts/check_battery.sh"
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big><tt><small>{calendar}</small></tt>",
+        "format": "{:%a %d %b, %H:%M:%S}",
+        "interval": 1,
+        "calendar": {
+            "weeks-pos": "left",
+            "format": {
+                "months": "",
+                "weeks": "<i>{:%U}</i>",
+                "today": "<b><u>{}</u></b>"
+            }
+        }
+    }
+}

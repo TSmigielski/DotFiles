@@ -28,4 +28,7 @@
 !rofi
 !rofi/**
 
+!waybar
+!waybar/**
+
 !zshrc
