@@ -1,5 +1,5 @@
 {
-    "layer": "top",
+    "layer": "bottom",
     "position": "top",
     "margin": "10 10 0 10",
     "modules-left": ["hyprland/workspaces", "mpris"],
@@ -78,6 +78,7 @@
     },
 
     "backlight": {
+        "reverse-scrolling": 1,
         "device": "intel_backlight",
         "format": "{percent}% {icon}",
         "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],

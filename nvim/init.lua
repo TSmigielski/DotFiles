@@ -123,7 +123,7 @@ require("lazy").setup({
     opts = {
       char = "┊",
       show_trailing_blankline_indent = false,
-    },
+    }
   },
 
   -- "gc" to comment visual regions/lines
@@ -141,7 +141,14 @@ require("lazy").setup({
   },
 
   -- Toggling values
-  { "nguyenvukhang/nvim-toggler", opts = {} },
+  { "nguyenvukhang/nvim-toggler", opts = {
+      inverses = {
+        ["up"] = "down",
+        ["top"] = "bottom",
+        ["left"] = "right",
+      }
+    }
+  },
 
   {
     -- Fuzzy Finder (files, lsp, etc)
