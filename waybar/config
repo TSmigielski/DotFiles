@@ -6,6 +6,22 @@
     "modules-center": ["memory", "cpu", "temperature", "network"],
     "modules-right": ["custom/weather", "pulseaudio", "backlight", "battery", "clock"],
 
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "Q",
+            "2": "W",
+            "3": "E",
+            "4": "R",
+            "5": "T",
+            "6": "I",
+            "7": "II",
+            "8": "III",
+            "9": "IV",
+            "10": "V"
+        }
+    },
+
     "mpris": {
         "interval": 1,
         "dynamic-len": 40,
@@ -36,6 +52,7 @@
     },
 
     "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
         "interval": 5,
         "critical-threshold": 65,
         "format": "{temperatureC}°C {icon}",

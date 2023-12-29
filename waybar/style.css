@@ -41,6 +41,10 @@ window#waybar.hidden {
     background: #7c818c;
 }
 
+#workspaces button.visible {
+    color: #BEC0C6;
+}
+
 #workspaces button.active {
     color: white;
 }
