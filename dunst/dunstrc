@@ -1,21 +1,29 @@
 [global]
-    monitor = 1
-    font = Fira Mono 10
-    corner_radius = 9
+    monitor = 0
+    font = FiraCode Nerd Font 11
+    offset = 32x32
+    corner_radius = 10
     frame_width = 2
+    separator_color = auto
+    idle_threshold = 200
+    markup = yes
+    format = "<b>%s %p</b>\n%b\n%p"
+    alignment = center
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
+
+    background = "#2E3440F2"
+    foreground = "#D8DEE9"
 
 
 [urgency_low]
-    background = "#1e1e1e"
-    foreground = "#ededed"
+    frame_color = "#bec8da"
 
 [urgency_normal]
-    background = "#0070C5"
-    foreground = "#ededed"
+    frame_color = "#6889b1"
 
 [urgency_critical]
-    background = "#e98200"
-    foreground = "#ededed"
+    frame_color = "#c84141"
+    timeout = 0
 
 
 [slack]
