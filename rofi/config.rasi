@@ -1,4 +1,10 @@
 configuration {
+    modes: "drun,window,filebrowser";
     font: "Fira Sans 13";
+    show-icons: true;
+    filebrowser {
+        directories-first: true;
+        sorting-method:    "name";
+    }
 }
-@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
+@theme "/usr/share/rofi/themes/rounded-nord-dark.rasi"
