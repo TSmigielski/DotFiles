@@ -1,7 +1,7 @@
 [global]
     monitor = 0
     font = FiraCode Nerd Font 10
-    width = (300, 500)
+    width = (250, 400)
     offset = 32x32
     corner_radius = 10
     frame_width = 2
