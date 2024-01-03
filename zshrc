@@ -71,6 +71,7 @@ fi
 export PATH=$PATH:~/.local/bin:~/.cargo/bin
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER="nvim +Man!"
 export KEYTIMEOUT=1
 export TERM=xterm-256color
 export DOTNET_CLI_UI_LANGUAGE=en
