@@ -37,6 +37,12 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
+# Ctrl navigation
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^[[3;5~" kill-word
+bindkey "^H" backward-kill-word
+
 # Alt navigation
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
@@ -61,6 +67,7 @@ bindkey "^R" history-incremental-search-backward
 
 # Misc
 setopt auto_cd
+WORDCHARS=
 
 # NVM
 if [[ -r /usr/share/nvm/init-nvm.sh ]]; then
