@@ -1,6 +1,7 @@
 configuration {
     modes: "drun,window,filebrowser";
     font: "Fira Sans 13";
+    sort: true;
     show-icons: true;
     filebrowser {
         directories-first: true;
