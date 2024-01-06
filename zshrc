@@ -95,6 +95,7 @@ alias sudo="sudo "
 alias vim="nvim"
 alias so="source"
 alias h="history"
+alias ph="grep -i installed /var/log/pacman.log" # pacman history
 alias bc="bc -q"
 alias cal="cal -w3"
 alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
