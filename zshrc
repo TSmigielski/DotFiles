@@ -74,7 +74,8 @@ if [[ -r /usr/share/nvm/init-nvm.sh ]]; then
   source /usr/share/nvm/init-nvm.sh
 fi
 
-# Env
+
+### Env ###
 export PATH=$PATH:~/.local/bin:~/.cargo/bin
 export EDITOR=nvim
 export VISUAL=nvim
@@ -84,24 +85,28 @@ export TERM=xterm-256color
 export DOTNET_CLI_UI_LANGUAGE=en
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
+
 ### Aliases ###
 # Git
 source ~/.zsh/omz.lib.git.zsh
 source ~/.zsh/omz.git.plugin.zsh
-alias gf="gfa"
+alias gf="gfa" # gf="git fetch" +a="--all --prune"
 
 # General
 alias sudo="sudo "
 alias vim="nvim"
 alias so="source"
 alias h="history"
-alias ph="grep -i installed /var/log/pacman.log" # pacman history
-alias bc="bc -q"
-alias cal="cal -w3"
-alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
+alias he="$EDITOR $HISTFILE" # History edit
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+# System dependent
+alias ph="grep -i installed /var/log/pacman.log" # pacman history
+alias bc="bc -q" # Basic calculator
+alias cal="cal -w" # Calendar
 
 # Eza
 alias eza="eza --git"
@@ -109,13 +114,14 @@ alias ls="eza --icons"
 alias l="eza -laF"
 alias ll="eza -laFG"
 
-# Other
+# Other programs
 alias nightlight="redshift -x && redshift -O $1"
 alias cmatrix="cmatrix -abu6"
 alias waybar="killall waybar; waybar"
+alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
 
 
-### Local file
+### Local file ###
 if [[ -r ~/.config/zsh_local ]]; then
   source ~/.config/zsh_local
 fi
