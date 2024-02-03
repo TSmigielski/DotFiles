@@ -119,11 +119,7 @@ require("lazy").setup({
 
   {
     -- Add indentation guides even on blank lines
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      char = "┊",
-      show_trailing_blankline_indent = false,
-    }
+    "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { }
   },
 
   -- "gc" to comment visual regions/lines
@@ -132,7 +128,7 @@ require("lazy").setup({
   -- This is some good shit!
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
@@ -142,12 +138,12 @@ require("lazy").setup({
 
   -- Toggling values
   { "nguyenvukhang/nvim-toggler", opts = {
-      inverses = {
-        ["up"] = "down",
-        ["top"] = "bottom",
-        ["left"] = "right",
-      }
+    inverses = {
+      ["up"] = "down",
+      ["top"] = "bottom",
+      ["left"] = "right",
     }
+  }
   },
 
   {
