@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd ~
-ln -s .config/zshrc .zshrc
+ln -s .config/zsh/zshrc .zshrc
 git clone https://github.com/romkatv/powerlevel10k.git
 mkdir .zsh
 cd .zsh

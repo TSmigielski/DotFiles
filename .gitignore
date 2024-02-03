@@ -31,4 +31,5 @@
 !waybar
 !waybar/**
 
-!zshrc
+!zsh
+!zsh/**
