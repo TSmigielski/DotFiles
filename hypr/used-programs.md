@@ -10,3 +10,4 @@
 - grim
 - slurp
 - swaylock [(fork)](https://github.com/Xenfo/swaylock-effects-improved)
+- wlsunset
