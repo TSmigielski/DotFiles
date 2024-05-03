@@ -92,6 +92,8 @@ alias gf="gfa" # gf="git fetch" +a="--all --prune"
 
 # General
 alias sudo="sudo "
+alias open="xdg-open"
+alias o="open"
 alias vim="nvim"
 alias so="source"
 alias h="history"
