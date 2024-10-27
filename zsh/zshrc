@@ -81,7 +81,7 @@ export MANPAGER="nvim +Man!"
 export KEYTIMEOUT=1
 export TERM=xterm-256color
 export DOTNET_CLI_UI_LANGUAGE=en
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export DOCKER_HOST=unix:///var/run/docker.sock
 
 
 ### Aliases ###
