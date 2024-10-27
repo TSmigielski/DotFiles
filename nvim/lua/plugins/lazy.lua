@@ -104,9 +104,6 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { }
   },
 
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
-
   -- This is some good shit!
   {
     "kylechui/nvim-surround",
@@ -143,6 +140,12 @@ require("lazy").setup({
         end,
       },
     },
+  },
+
+  -- Telescope file browser
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
 
   {

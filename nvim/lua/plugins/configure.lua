@@ -10,10 +10,18 @@ require("telescope").setup {
       },
     },
   },
+  extensions = {
+    file_browser = {
+      hijack_netrw = true
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
+
+-- Load telescope file browser
+require("telescope").load_extension "file_browser"
 
 -- Configure Treesitter
 require("nvim-treesitter.configs").setup {
