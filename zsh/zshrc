@@ -22,34 +22,8 @@ zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}" "r:|=*" "l:|=* r:|=*"
 zstyle ":completion:*" menu select
 _comp_options+=(globdots)
 
-# Vim stuff
-bindkey -v # Needs to be before any other keybind change
-zmodload zsh/complist
-bindkey -M menuselect "h" vi-backward-char
-bindkey -M menuselect "k" vi-up-line-or-history
-bindkey -M menuselect "l" vi-forward-char
-bindkey -M menuselect "j" vi-down-line-or-history
-bindkey -a "^[[3~" delete-char
-bindkey "^[[3~" delete-char
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-
-# Ctrl navigation
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-bindkey "^[[3;5~" kill-word
-bindkey "^H" backward-kill-word
-
-# Alt navigation
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
-bindkey "^[[3;3~" kill-word
-bindkey "^[^?" backward-kill-word
-
-# Home/End
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+# jeffreytse/zsh-vi-mode
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # History
 HISTFILE=~/.zsh_history
@@ -57,11 +31,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 autoload -U history-search-end
-#zle -N history-beginning-search-backward-end history-search-end
-#zle -N history-beginning-search-forward-end history-search-end
-#bindkey "^[[A" history-beginning-search-backward-end
-#bindkey "^[[B" history-beginning-search-forward-end
-bindkey "^R" history-incremental-search-backward
 
 # Misc
 setopt auto_cd
@@ -102,6 +71,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+alias treeg="tree --gitignore"
 
 # System dependent
 alias ph="grep -i installed /var/log/pacman.log" # pacman history
