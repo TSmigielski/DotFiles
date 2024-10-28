@@ -157,4 +157,6 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
 
+  { "sbdchd/neoformat" }
+
 }, {})

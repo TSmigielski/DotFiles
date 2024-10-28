@@ -117,7 +117,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+  -- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
   -- Lesser used LSP functionality
   nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -219,3 +219,7 @@ cmp.setup {
   },
 }
 
+-- Neoformat
+vim.g.neoformat_basic_format_align = 1
+vim.g.neoformat_basic_format_trim = 1
+vim.g.neoformat_try_node_exe = 1
