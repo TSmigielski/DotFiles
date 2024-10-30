@@ -68,7 +68,10 @@ require("lazy").setup({
       highlight = { enable = true },
       indent = { enable = true },
     },
-    build = ":TSUpdate"
+    build = ":TSUpdate",
+    specs = {
+      "nvim-treesitter/nvim-treesitter-context"
+    }
   },
 
   {
@@ -92,13 +95,38 @@ require("lazy").setup({
   },
 
   -- LSP
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "saadparwaiz1/cmp_luasnip",
+  "onsails/lspkind.nvim",
+
   {
-    "williamboman/mason.nvim",
-    opts = { }
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v4.x"
   },
 
-  "neovim/nvim-lspconfig",
-  "williamboman/mason-lspconfig.nvim",
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "rafamadriz/friendly-snippets"
+    }
+  },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } }
+      }
+    }
+  },
 
   -- Useability
   {
