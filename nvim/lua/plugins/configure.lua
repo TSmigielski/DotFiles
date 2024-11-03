@@ -9,11 +9,6 @@ require("telescope").setup {
         ["<C-k>"] = "move_selection_previous",
       },
     },
-  },
-  extensions = {
-    file_browser = {
-      hijack_netrw = true
-    }
   }
 }
 

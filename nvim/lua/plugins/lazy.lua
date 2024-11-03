@@ -101,13 +101,10 @@ require("lazy").setup({
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
   "saadparwaiz1/cmp_luasnip",
   "onsails/lspkind.nvim",
-
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v4.x"
-  },
 
   {
     "L3MON4D3/LuaSnip",
@@ -146,5 +143,10 @@ require("lazy").setup({
   },
 
   "sbdchd/neoformat",
-  "tpope/vim-sleuth"
+  "tpope/vim-sleuth",
+
+  {
+    "stevearc/oil.nvim",
+    opts = { }
+  }
 }, {})

@@ -17,3 +17,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = highlight_group,
   pattern = "*",
 })
+
+-- Auto-show/hide cursorline on window enter/exit
+vim.api.nvim_create_augroup("CursorLine", { clear = true })
+vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
+    group = "CursorLine",
+    callback = function()
+        vim.wo.cursorline = true
+    end
+})
+vim.api.nvim_create_autocmd({"WinLeave", "BufLeave"}, {
+    group = "CursorLine",
+    callback = function()
+        vim.wo.cursorline = false
+    end
+})

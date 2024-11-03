@@ -36,12 +36,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", getOpts("LSP rename"))
     vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", getOpts("LSP format"))
     vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", getOpts("LSP code actions"))
+    vim.keymap.set("n", "<A-CR>", "<cmd>lua vim.lsp.buf.code_action()<cr>", getOpts("LSP code actions"))
   end,
 })
 
 -- Autocompletion
 local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
 local lspkind = require("lspkind")
 
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -58,12 +58,11 @@ cmp.setup({
     end
   },
   mapping = cmp.mapping.preset.insert({
-    ["<Tab>"] = cmp_action.luasnip_supertab(),
-    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
-    ["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),
-    ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
+    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = "select" }), { "i", "c" }),
+    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = "select" }), { "i", "c" }),
+    ["<C-l>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
     ["<CR>"] = cmp.mapping.confirm(),
-    ["<C-l>"] = cmp.mapping.confirm(),
+    ["<Tab>"] = cmp.mapping.confirm(),
     ["<C-Space>"] = cmp.mapping.complete()
   }),
   preselect = "item",
@@ -79,4 +78,26 @@ cmp.setup({
       show_labelDetails = true
     })
   }
+})
+
+-- Use buffer source for "/" and "?"
+cmp.setup.cmdline({ "/", "?" }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" }
+  }
+})
+
+-- Use cmdline & path source for ":"
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources(
+    {{name = "path"}}, {{
+      name = "cmdline",
+      option = {
+        ignore_cmds = { "Man", "!" }
+      }
+  }}),
+---@diagnostic disable-next-line: missing-fields
+  matching = { disallow_symbol_nonprefix_matching = false }
 })
