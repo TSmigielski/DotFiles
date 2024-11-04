@@ -17,7 +17,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Plugins first
-require("plugins")
+require("lazy").setup("plugins", {
+  defaults = {
+    lazy = false
+  }
+})
 
 -- Then load the config, to potentially override plugin defaults
 require("config")
