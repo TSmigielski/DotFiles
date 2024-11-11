@@ -30,11 +30,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- Autocompletion
+-- CMP --
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 require("luasnip.loaders.from_vscode").lazy_load()
+
+-- Base mappings
+local mappings = {
+  ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = "select" }), { "i", "c" }),
+  ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = "select" }), { "i", "c" }),
+  ["<C-l>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
+  ["<Tab>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
+  ["<CR>"] = cmp.mapping(cmp.mapping.confirm(), { "i" }),
+  ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
+  ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+}
 
 cmp.setup({
   sources = {
@@ -47,14 +58,7 @@ cmp.setup({
       require("luasnip").lsp_expand(args.body)
     end
   },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = "select" }), { "i", "c" }),
-    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = "select" }), { "i", "c" }),
-    ["<C-l>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
-    ["<CR>"] = cmp.mapping.confirm(),
-    ["<Tab>"] = cmp.mapping.confirm(),
-    ["<C-Space>"] = cmp.mapping.complete()
-  }),
+  mapping = mappings,
   preselect = "item",
   completion = {
     completeopt = "menu,menuone,noinsert"
@@ -72,7 +76,7 @@ cmp.setup({
 
 -- Use buffer source for "/" and "?"
 cmp.setup.cmdline({ "/", "?" }, {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = mappings,
   sources = {
     { name = "buffer" }
   }
@@ -80,7 +84,7 @@ cmp.setup.cmdline({ "/", "?" }, {
 
 -- Use cmdline & path source for ":"
 cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = mappings,
   sources = cmp.config.sources(
     {{name = "path"}}, {{
       name = "cmdline",
@@ -91,3 +95,10 @@ cmp.setup.cmdline(":", {
 ---@diagnostic disable-next-line: missing-fields
   matching = { disallow_symbol_nonprefix_matching = false }
 })
+
+-- Insert '(' after confirming
+local autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on(
+  "confirm_done",
+  autopairs.on_confirm_done()
+)
