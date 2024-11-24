@@ -81,8 +81,8 @@ alias cal="cal -w" # Calendar
 # Eza
 alias eza="eza --git"
 alias ls="eza --icons"
-alias l="eza -laF"
-alias ll="eza -laFG"
+alias l="eza -laF auto"
+alias ll="eza -laGF auto"
 
 # Other programs
 alias nightlight="redshift -x && redshift -O $1"
