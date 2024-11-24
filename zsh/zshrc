@@ -16,14 +16,11 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd completion)
 
-# Auto-complete
-autoload -Uz compinit; compinit
-zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}" "r:|=*" "l:|=* r:|=*"
-zstyle ":completion:*" menu select
-_comp_options+=(globdots)
-
 # jeffreytse/zsh-vi-mode
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# Auto-complete
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # History
 HISTFILE=~/.zsh_history
