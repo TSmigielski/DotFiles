@@ -1,4 +1,7 @@
 return {
+  "stevearc/vim-arduino",
+  "rhysd/vim-clang-format",
+
   {
     "sbdchd/neoformat",
     init = function ()

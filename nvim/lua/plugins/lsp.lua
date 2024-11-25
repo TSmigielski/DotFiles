@@ -9,22 +9,6 @@ return {
   "onsails/lspkind.nvim",
 
   {
-    "williamboman/mason.nvim",
-    opts = { }
-  },
-
-  {
-    "williamboman/mason-lspconfig.nvim",
-    opts = {
-      handlers = {
-        function(server_name)
-          require("lspconfig")[server_name].setup({})
-        end
-      }
-    }
-  },
-
-  {
     "L3MON4D3/LuaSnip",
     dependencies = {
       "rafamadriz/friendly-snippets"
@@ -41,5 +25,11 @@ return {
         { path = "luvit-meta/library", words = { "vim%.uv" } }
       }
     }
+  },
+
+  {
+    "seblj/roslyn.nvim",
+    ft = "cs",
+    opts = { }
   }
 }
