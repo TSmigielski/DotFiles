@@ -40,7 +40,7 @@ fi
 
 
 ### Env ###
-export PATH=$PATH:~/.local/bin:~/.cargo/bin
+export PATH=$PATH:~/.local/bin:~/.cargo/bin:~/.symfony5/bin
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER="nvim +Man!"

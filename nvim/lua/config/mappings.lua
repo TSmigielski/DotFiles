@@ -51,17 +51,25 @@ vim.keymap.set("n", "<leader>t", function()
 end, Desc("Set tab width"))
 
 -- Telescope
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, Desc("Telescope find files"))
-vim.keymap.set("n", "<leader><leader>", builtin.buffers, Desc("Telescope open buffers"))
-vim.keymap.set("n", "<leader>fg", builtin.git_files, Desc("Telescope git files"))
+local telescope = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", function()
+    -- Check if in git repository
+    local inGit = vim.fn.system("git rev-parse --git-dir 2> /dev/null")
+    if (vim.v.shell_error == 0) then
+	telescope.git_files()
+    else
+	telescope.find_files()
+    end
+end, Desc("Find file (Telescope)"))
+vim.keymap.set("n", "<leader><leader>", telescope.buffers, Desc("Find open buffer (Telescope)"))
+vim.keymap.set("n", "<leader>fg", telescope.live_grep, Desc("Live grep (Telescope)"))
 vim.keymap.set("n", "<leader>/", function()
-    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
+    telescope.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
 	winblend = 10,
 	previewer = false,
     })
-end, Desc("Telescope current buffer"))
-vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", Desc("Telescope file browser"))
+end, Desc("Find in current buffer (Telescope)"))
+vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", Desc("File browser (Telescope)"))
 
 -- VimArduino
 vim.keymap.set("n", "<leader>ai", "<cmd>ArduinoInfo<CR>", Desc("Display VimArduino plugin info"))

@@ -1,6 +1,7 @@
 return {
   "stevearc/vim-arduino",
   "rhysd/vim-clang-format",
+  "tpope/vim-sleuth",
 
   {
     "sbdchd/neoformat",
@@ -23,6 +24,10 @@ return {
         ["up"] = "down",
         ["top"] = "bottom",
         ["left"] = "right",
+        ["low"] = "high",
+        ["LOW"] = "HIGH",
+        ["on"] = "off",
+    	["On"] = "Off"
       }
     }
   },
@@ -49,5 +54,15 @@ return {
     init = function()
       vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
     end
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
   }
 }
