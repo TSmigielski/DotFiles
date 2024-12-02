@@ -2,15 +2,7 @@ return {
   "stevearc/vim-arduino",
   "rhysd/vim-clang-format",
   "tpope/vim-sleuth",
-
-  {
-    "sbdchd/neoformat",
-    init = function ()
-      vim.g.neoformat_basic_format_align = 1
-      vim.g.neoformat_basic_format_trim = 1
-      vim.g.neoformat_try_node_exe = 1
-    end
-  },
+  "prettier/vim-prettier",
 
   {
     "kylechui/nvim-surround",
