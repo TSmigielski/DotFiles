@@ -2,6 +2,7 @@ return {
   "stevearc/vim-arduino",
   "rhysd/vim-clang-format",
   "tpope/vim-sleuth",
+  "tpope/vim-fugitive",
   "prettier/vim-prettier",
 
   {
@@ -19,14 +20,20 @@ return {
         ["low"] = "high",
         ["LOW"] = "HIGH",
         ["on"] = "off",
-    	["On"] = "Off"
+    	["On"] = "Off",
+    	["Show"] = "Hide",
+    	["show"] = "hide",
       }
     }
   },
 
   {
     "stevearc/oil.nvim",
-    opts = { }
+    opts = {
+      view_options = {
+        show_hidden = true
+      }
+    }
   },
 
   {

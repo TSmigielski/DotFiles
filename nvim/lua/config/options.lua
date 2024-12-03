@@ -33,3 +33,5 @@ vim.opt.breakindent = true
 vim.opt.signcolumn = "yes"
 vim.opt.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
+
+vim.opt.splitright = true

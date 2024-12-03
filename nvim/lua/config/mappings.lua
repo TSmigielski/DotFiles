@@ -35,6 +35,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc =
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true }) -- Disable space action (leave it for leader)
 vim.keymap.del("n", "<leader>p")
 vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
+vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
 vim.keymap.set("n", "gh", ":help <C-r><C-w><CR>", Desc("Goto help files (horizontal)"))
 vim.keymap.set("n", "gvh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (vertical)"))
 vim.keymap.set("n", "<leader>t", function()

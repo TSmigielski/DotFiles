@@ -42,7 +42,6 @@ local mappings = {
   ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = "select" }), { "i", "c" }),
   ["<C-l>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
   ["<Tab>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
-  ["<CR>"] = cmp.mapping(cmp.mapping.confirm(), { "i" }),
   ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
   ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
 }
