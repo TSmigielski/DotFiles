@@ -35,3 +35,4 @@ vim.opt.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 
 vim.opt.splitright = true
+vim.opt.splitbelow = true

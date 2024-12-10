@@ -3,13 +3,19 @@ local function Desc (desc)
     return { desc = desc }
 end
 
--- Always allow Ctrl+HJKL in all modes
-vim.keymap.set("i", "<C-h>", "<Left>")
-vim.keymap.set("i", "<C-j>", "<Down>")
-vim.keymap.set("i", "<C-k>", "<Up>")
-vim.keymap.set("i", "<C-l>", "<Right>")
-vim.keymap.set("n", "<C-j>", "<Down>")
-vim.keymap.set("n", "<C-k>", "<Up>")
+-- Ctrl+HJKL movement
+vim.keymap.set({"i","n"}, "<C-h>", "<Left>")
+vim.keymap.set({"i","n"}, "<C-l>", "<Right>")
+vim.keymap.set("i", "<C-j>", "<C-o>g<Down>")
+vim.keymap.set("i", "<C-k>", "<C-o>g<Up>")
+vim.keymap.set("n", "<C-j>", "g<Down>")
+vim.keymap.set("n", "<C-k>", "g<Up>")
+
+-- Move between windows
+vim.keymap.set("n", "<A-h>", "<C-w>h")
+vim.keymap.set("n", "<A-j>", "<C-w>j")
+vim.keymap.set("n", "<A-k>", "<C-w>k")
+vim.keymap.set("n", "<A-l>", "<C-w>l")
 
 -- Keep the screen centered when using these motions
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -23,8 +29,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", Desc("Move selected text up a line"
 
 -- Register shenanigans
 vim.keymap.set("x", "<leader>p", [["_dP]], Desc("Paste without losing register"))
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], Desc("Yank into system clipboard"))
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], Desc("Delete to discard register"))
+vim.keymap.set({"n","v"}, "<leader>y", [["+y]], Desc("Yank into system clipboard"))
+vim.keymap.set({"n","v"}, "<leader>d", [["_d]], Desc("Delete to discard register"))
+
+-- Terminal mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- QOL
 vim.keymap.set("i", "<C-c>", "<esc>") -- Ctrl + C == Esc
@@ -32,7 +41,7 @@ vim.keymap.set("n", "Q", "<nop>") -- Disable Q
 vim.keymap.set("n", "J", "mzJ`z") -- Keep cursor in place during J
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], Desc("Search & replace the word that the cursor is on"))
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Add execute permission to file in buffer" })
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true }) -- Disable space action (leave it for leader)
+vim.keymap.set({"n","v"}, "<Space>", "<Nop>", { silent = true }) -- Disable space action (leave it for leader)
 vim.keymap.del("n", "<leader>p")
 vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
 vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
