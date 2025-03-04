@@ -21,6 +21,14 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Auto-complete
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+bindkey '^I' menu-complete
+bindkey "$terminfo[kcbt]" reverse-menu-complete
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**'
+zstyle ':autocomplete:*' min-input 3
+zstyle ':autocomplete:*' delay 0.2
 
 # History
 HISTFILE=~/.zsh_history
