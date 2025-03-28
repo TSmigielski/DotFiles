@@ -1,17 +1,33 @@
+local quickScopeKeys = { "f", "F", "t", "T" }
+
 return {
   "stevearc/vim-arduino",
   "rhysd/vim-clang-format",
-  "tpope/vim-sleuth",
-  "tpope/vim-fugitive",
-  "prettier/vim-prettier",
+
+  {
+    "tpope/vim-fugitive",
+    event = "VeryLazy"
+  },
+
+  {
+    "tpope/vim-sleuth",
+    event = "BufReadPre"
+  },
+
+  {
+    "prettier/vim-prettier",
+    event = "VeryLazy"
+  },
 
   {
     "kylechui/nvim-surround",
+    event = "VeryLazy",
     opts = { }
   },
 
   {
     "nguyenvukhang/nvim-toggler",
+    keys = "<leader>i",
     opts = {
       inverses = {
         ["up"] = "down",
@@ -29,6 +45,7 @@ return {
 
   {
     "stevearc/oil.nvim",
+    event = "VeryLazy",
     opts = {
       view_options = {
         show_hidden = true
@@ -38,7 +55,11 @@ return {
 
   {
     "windwp/nvim-ts-autotag",
-    opts = { }
+    event = "InsertEnter",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
+    },
+    opts = { },
   },
 
   {
@@ -50,8 +71,9 @@ return {
 
   {
     "unblevable/quick-scope",
+    keys = quickScopeKeys,
     init = function()
-      vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+      vim.g.qs_highlight_on_keys = quickScopeKeys
     end
   },
 

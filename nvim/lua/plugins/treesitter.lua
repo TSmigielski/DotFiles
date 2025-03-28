@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     main = "nvim-treesitter.configs",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       ensure_installed = { "lua", "javascript", "vimdoc", "vim", "html", "css", "bash", "json", "passwd", "xml", "yaml" },
       auto_install = true,
@@ -11,9 +12,14 @@ return {
       highlight = { enable = true },
       indent = { enable = true },
     },
-    build = ":TSUpdate",
-    specs = {
-      "nvim-treesitter/nvim-treesitter-context"
+    build = ":TSUpdate"
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
     }
   }
 }

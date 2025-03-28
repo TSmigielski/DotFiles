@@ -2,6 +2,7 @@ return {
   {
     "Mofiqul/vscode.nvim",
     priority = 1000,
+    lazy = false,
     opts = {
       transparent = true,
       italic_comments = true
@@ -14,6 +15,7 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
+    lazy = false,
     opts = {
       options = {
         icons_enabled = true,
@@ -27,29 +29,25 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
+    event = "BufReadPre",
     opts = { }
   },
 
   {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     opts = { }
   },
 
   {
     "lewis6991/gitsigns.nvim",
-    opts = {
-      signs = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" }
-      }
-    }
+    event = "VeryLazy",
+    opts = { }
   },
 
   {
     "j-hui/fidget.nvim",
+    event = "VeryLazy",
     opts = { }
   }
 }

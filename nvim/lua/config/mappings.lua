@@ -42,7 +42,6 @@ vim.keymap.set("n", "J", "mzJ`z") -- Keep cursor in place during J
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], Desc("Search & replace the word that the cursor is on"))
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Add execute permission to file in buffer" })
 vim.keymap.set({"n","v"}, "<Space>", "<Nop>", { silent = true }) -- Disable space action (leave it for leader)
-vim.keymap.del("n", "<leader>p")
 vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
 vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
 vim.keymap.set("n", "gh", ":help <C-r><C-w><CR>", Desc("Goto help files (horizontal)"))
