@@ -31,8 +31,7 @@ return {
     opts = {
       modes = {
         diagnostics = {
-          auto_close = true,
-          auto_open = true
+          auto_close = true
         }
       }
     }

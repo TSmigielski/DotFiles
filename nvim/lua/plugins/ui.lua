@@ -20,8 +20,48 @@ return {
       options = {
         icons_enabled = true,
         theme = "codedark",
-        component_separators = "|",
+        component_separators = "",
         section_separators = "",
+        disabled_filetypes = {
+          "git"
+        }
+      },
+      sections = {
+        lualine_c = {
+          {
+            "filename",
+            newfile_status = true,
+            symbols = {
+              modified = '●',
+              readonly = '[readonly]',
+              unnamed = '[no name]',
+              newfile = '[new]'
+            }
+          }, 
+          {
+            "buffers",
+            hide_filename_extension = true,
+            mode = 2,
+            symbols = {
+              alternate_file = "^",
+            }
+          }
+        },
+        lualine_x = {
+          "lsp_status", 
+          "encoding",
+          "fileformat",
+          "filetype"
+        }
+      },
+      extensions = {
+        "fugitive",
+        "fzf",
+        "lazy",
+        "man",
+        "mason",
+        "oil",
+        "trouble"
       }
     }
   },

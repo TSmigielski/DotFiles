@@ -60,6 +60,16 @@ vim.keymap.set("n", "<leader>T", function()
     end
 end, Desc("Set tab width"))
 
+vim.keymap.set("n", "<leader>b", function()
+    local input = vim.fn.input("Enter buffer index: ")
+    local value = tonumber(input)
+    if (value) then
+	vim.cmd("LualineBuffersJump " .. value)
+    else
+	print("Inavlid input, number expected.")
+    end
+end, Desc("Goto buffer"))
+
 -- Telescope
 local telescope = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", function()
