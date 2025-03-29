@@ -30,11 +30,9 @@ return {
     main = "ibl",
     event = "BufReadPre",
     opts = {
-      whitespace = {
-
-      },
       scope = {
         highlight = highlight,
+        show_end = false,
         include = {
           node_type = { 
             c_sharp = {
