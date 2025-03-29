@@ -46,7 +46,7 @@ vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
 vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
 vim.keymap.set("n", "gh", ":help <C-r><C-w><CR>", Desc("Goto help files (horizontal)"))
 vim.keymap.set("n", "gvh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (vertical)"))
-vim.keymap.set("n", "<leader>t", function()
+vim.keymap.set("n", "<leader>T", function()
     local input = vim.fn.input("Enter tab width: ")
     local value = tonumber(input)
     if (value) then
@@ -80,6 +80,11 @@ vim.keymap.set("n", "<leader>/", function()
     })
 end, Desc("Find in current buffer (Telescope)"))
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", Desc("File browser (Telescope)"))
+
+-- Trouble
+vim.keymap.set("n", "<leader>tt", ":Trouble diagnostics toggle focus=false filter.buf=0<CR>", Desc("Toggle diagnostics"))
+vim.keymap.set("n", "<leader>ts", ":Trouble symbols toggle pinned=true win.relative=win win.position=right<CR>", Desc("Toggle symbols"))
+vim.keymap.set("n", "<leader>tl", ":Trouble lsp toggle focus=false win.position=right<CR>", Desc("Toggle definitions"))
 
 -- VimArduino
 vim.keymap.set("n", "<leader>ai", "<cmd>ArduinoInfo<CR>", Desc("Display VimArduino plugin info"))

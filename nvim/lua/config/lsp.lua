@@ -16,17 +16,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return { buffer = event.buf, desc = desc }
     end
 
-    vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", getOpts("Quick documentation"))
-    vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", getOpts("Goto definition"))
-    vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", getOpts("Goto declaration"))
-    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", getOpts("Goto implementation"))
-    vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", getOpts("Goto type definition"))
-    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", getOpts("See references"))
-    vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", getOpts("See signature"))
-    vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", getOpts("LSP rename"))
-    vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", getOpts("LSP format"))
-    vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", getOpts("LSP code actions"))
-    vim.keymap.set("n", "<A-CR>", "<cmd>lua vim.lsp.buf.code_action()<cr>", getOpts("LSP code actions"))
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, getOpts("Quick documentation"))
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, getOpts("Goto definition"))
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, getOpts("Goto declaration"))
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, getOpts("Goto implementation"))
+    vim.keymap.set("n", "go", vim.lsp.buf.type_definition, getOpts("Goto type definition"))
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, getOpts("See references"))
+    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, getOpts("See signature"))
+    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, getOpts("LSP rename"))
+    vim.keymap.set({ "n", "x" }, "<F3>", vim.lsp.buf.format, getOpts("LSP format"))
+    vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
+    vim.keymap.set("n", "<A-CR>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
+    vim.keymap.set("n", "<A-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
   end,
 })
 
@@ -43,7 +44,17 @@ local mappings = {
   ["<C-l>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
   ["<Tab>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
   ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
-  ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+  ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+
+  -- Confirm & insert dot
+  ["."] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.confirm({ select = true })
+      vim.fn.feedkeys(".", "n")
+    else
+      fallback()
+    end
+  end, { "i", "c" })
 }
 
 cmp.setup({
@@ -90,8 +101,8 @@ cmp.setup.cmdline(":", {
       option = {
         ignore_cmds = { "Man", "!" }
       }
-  }}),
----@diagnostic disable-next-line: missing-fields
+    }}),
+  ---@diagnostic disable-next-line: missing-fields
   matching = { disallow_symbol_nonprefix_matching = false }
 })
 

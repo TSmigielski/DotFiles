@@ -46,7 +46,8 @@ return {
               "switch_section"
             },
             lua = {
-              "function_call",
+              "table_constructor",
+              "expression_list"
             }
           }
         },

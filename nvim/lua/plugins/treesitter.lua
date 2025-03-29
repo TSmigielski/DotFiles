@@ -4,7 +4,7 @@ return {
     main = "nvim-treesitter.configs",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
-      ensure_installed = { "lua", "javascript", "vimdoc", "vim", "html", "css", "bash", "json", "passwd", "xml", "yaml" },
+      ensure_installed = { "lua", "javascript", "vimdoc", "vim", "html", "css", "bash", "json", "passwd", "xml", "yaml", "regex" },
       auto_install = true,
       sync_install = false,
       ignore_install = {},

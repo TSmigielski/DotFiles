@@ -23,7 +23,10 @@ vim.api.nvim_create_augroup("CursorLine", { clear = true })
 vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
     group = "CursorLine",
     callback = function()
-        vim.wo.cursorline = true
+        -- Check if the current window is a floating window
+        if vim.api.nvim_win_get_config(0).relative == "" then
+            vim.wo.cursorline = true
+        end
     end
 })
 vim.api.nvim_create_autocmd({"WinLeave", "BufLeave"}, {

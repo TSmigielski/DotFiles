@@ -26,6 +26,19 @@ return {
   },
 
   {
+    "folke/trouble.nvim",
+    event = "VeryLazy",
+    opts = {
+      modes = {
+        diagnostics = {
+          auto_close = true,
+          auto_open = true
+        }
+      }
+    }
+  },
+
+  {
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {
