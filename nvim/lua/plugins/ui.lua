@@ -37,14 +37,6 @@ return {
               unnamed = '[no name]',
               newfile = '[new]'
             }
-          }, 
-          {
-            "buffers",
-            hide_filename_extension = true,
-            mode = 2,
-            symbols = {
-              alternate_file = "^",
-            }
           }
         },
         lualine_x = {
@@ -52,6 +44,17 @@ return {
           "encoding",
           "fileformat",
           "filetype"
+        }
+      },
+      tabline = {
+        lualine_a = { 
+          {
+            "buffers",
+            mode = 2,
+            symbols = {
+              alternate_file = "^",
+            }
+          }
         }
       },
       extensions = {
