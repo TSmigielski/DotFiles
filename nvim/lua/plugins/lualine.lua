@@ -1,5 +1,5 @@
 local white = {
-   fg = "#f5f5f5"
+   fg = "#f4f4ee"
 }
 
 return {
@@ -68,7 +68,7 @@ return {
          }
       },
       tabline = {
-         lualine_a = { 
+         lualine_a = {
             {
                "buffers",
                mode = 2,
@@ -76,6 +76,10 @@ return {
                   alternate_file = "^",
                }
             }
+         },
+         lualine_x = {
+            "searchcount",
+            "selectioncount"
          }
       },
       extensions = {

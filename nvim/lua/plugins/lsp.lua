@@ -32,6 +32,7 @@ return {
          modes = {
             diagnostics = {
                auto_close = true,
+               warn_no_results = false,
                preview = {
                   type = "split",
                   relative = "win",
@@ -39,13 +40,11 @@ return {
                   size = 0.4
                }
             },
-            references = {
-               preview = {
-                  type = "split",
-                  relative = "win",
-                  position = "right",
-                  size = 0.5
-               }
+            lsp = {
+               open_no_results = true
+            },
+            symbols = {
+               auto_open = true
             }
          }
       }

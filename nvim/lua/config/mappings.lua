@@ -93,20 +93,49 @@ end, Desc("Find in current buffer (Telescope)"))
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", Desc("File browser (Telescope)"))
 
 -- Trouble
+local trouble = require("trouble")
 vim.keymap.set("n", "<leader>tt", ":Trouble diagnostics toggle<CR>", Desc("Toggle diagnostics"))
-vim.keymap.set("n", "<leader>ts", ":Trouble symbols toggle<CR>", Desc("Toggle symbols"))
-vim.keymap.set("n", "<leader>tl", ":Trouble lsp toggle win.type = split win.position = right<CR>", Desc("Toggle definitions"))
+vim.keymap.set("n", "<leader>ts", function ()
+   if (trouble.is_open("lsp")) then
+      trouble.close("lsp")
+      trouble.open("symbols")
+      return
+   end
+   trouble.toggle("symbols")
+end, Desc("Toggle symbols"))
+
+vim.keymap.set("n", "<leader>tl", function ()
+   local lsp = {
+      mode = "lsp",
+      win = {
+         position = "right"
+      }
+   }
+   if (trouble.is_open("symbols")) then
+      trouble.close("symbols")
+      trouble.open(lsp)
+      return
+   end
+   trouble.toggle(lsp)
+end, Desc("Toggle definitions"))
 
 -- VimArduino
-vim.keymap.set("n", "<leader>ai", "<cmd>ArduinoInfo<CR>", Desc("Display VimArduino plugin info"))
-vim.keymap.set("n", "<leader>aa", "<cmd>ArduinoAttach<CR>", Desc("Automatically attach to board"))
-vim.keymap.set("n", "<leader>ab", "<cmd>ArduinoChooseBoard<CR>", Desc("Choose arduino board"))
-vim.keymap.set("n", "<leader>ar", "<cmd>ArduinoChooseProgrammer<CR>", Desc("Choose arduino programmer"))
-vim.keymap.set("n", "<leader>ap", "<cmd>ArduinoChoosePort<CR>", Desc("Choose arduino port"))
-vim.keymap.set("n", "<leader>av", "<cmd>ArduinoVerify<CR>", Desc("Build the sketch"))
-vim.keymap.set("n", "<leader>au", "<cmd>ArduinoUpload<CR>", Desc("Build and upload the sketch"))
-vim.keymap.set("n", "<leader>as", "<cmd>ArduinoSerial<CR>", Desc("Connect to the board over serial"))
-vim.keymap.set("n", "<leader>al", "<cmd>ArduinoUploadAndSerial<CR>", Desc("Build, upload, and connect to the board over serial"))
+local inoGroup = vim.api.nvim_create_augroup("ino_autocommands", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+   group = inoGroup,
+   pattern = "arduino",
+   callback = function()
+      vim.keymap.set("n", "<leader>ai", "<cmd>ArduinoInfo<CR>", Desc("Display VimArduino plugin info"))
+      vim.keymap.set("n", "<leader>aa", "<cmd>ArduinoAttach<CR>", Desc("Automatically attach to board"))
+      vim.keymap.set("n", "<leader>ab", "<cmd>ArduinoChooseBoard<CR>", Desc("Choose arduino board"))
+      vim.keymap.set("n", "<leader>ar", "<cmd>ArduinoChooseProgrammer<CR>", Desc("Choose arduino programmer"))
+      vim.keymap.set("n", "<leader>ap", "<cmd>ArduinoChoosePort<CR>", Desc("Choose arduino port"))
+      vim.keymap.set("n", "<leader>av", "<cmd>ArduinoVerify<CR>", Desc("Build the sketch"))
+      vim.keymap.set("n", "<leader>au", "<cmd>ArduinoUpload<CR>", Desc("Build and upload the sketch"))
+      vim.keymap.set("n", "<leader>as", "<cmd>ArduinoSerial<CR>", Desc("Connect to the board over serial"))
+      vim.keymap.set("n", "<leader>al", "<cmd>ArduinoUploadAndSerial<CR>", Desc("Build, upload, and connect to the board over serial"))
+   end,
+})
 
 -- Other plugins
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
