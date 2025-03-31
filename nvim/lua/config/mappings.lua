@@ -51,13 +51,13 @@ vim.keymap.set("n", "<leader>T", function()
     local value = tonumber(input)
 
     if (not value) then
-	value = 4
+        value = 4
     end
 
     vim.opt.tabstop = 8
     vim.opt.softtabstop = value
     vim.opt.shiftwidth = value
-    vim.opt.expandtab = false
+    vim.opt.expandtab = true
     print("Tab width set to: " .. value)
 end, Desc("Set tab width"))
 
@@ -65,9 +65,9 @@ vim.keymap.set("n", "<leader>b", function()
     local input = vim.fn.input("Enter buffer index: ")
     local value = tonumber(input)
     if (value) then
-	vim.cmd("LualineBuffersJump " .. value)
+        vim.cmd("LualineBuffersJump " .. value)
     else
-	print("Inavlid input, number expected.")
+        print("Inavlid input, number expected.")
     end
 end, Desc("Goto buffer"))
 
@@ -77,23 +77,23 @@ vim.keymap.set("n", "<leader>ff", function()
     -- Check if in git repository
     local inGit = vim.fn.system("git rev-parse --git-dir 2> /dev/null")
     if (vim.v.shell_error == 0) then
-	telescope.git_files()
+        telescope.git_files()
     else
-	telescope.find_files()
+        telescope.find_files()
     end
 end, Desc("Find file (Telescope)"))
 vim.keymap.set("n", "<leader><leader>", telescope.buffers, Desc("Find open buffer (Telescope)"))
 vim.keymap.set("n", "<leader>fg", telescope.live_grep, Desc("Live grep (Telescope)"))
 vim.keymap.set("n", "<leader>/", function()
     telescope.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
-	winblend = 10,
-	previewer = false,
+        winblend = 10,
+        previewer = false,
     })
 end, Desc("Find in current buffer (Telescope)"))
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", Desc("File browser (Telescope)"))
 
 -- Trouble
-vim.keymap.set("n", "<leader>tt", ":Trouble diagnostics toggle focus=false filter.buf=0<CR>", Desc("Toggle diagnostics"))
+vim.keymap.set("n", "<leader>tt", ":Trouble diagnostics toggle<CR>", Desc("Toggle diagnostics"))
 vim.keymap.set("n", "<leader>ts", ":Trouble symbols toggle pinned=true win.relative=win win.position=right<CR>", Desc("Toggle symbols"))
 vim.keymap.set("n", "<leader>tl", ":Trouble lsp toggle focus=false win.position=right<CR>", Desc("Toggle definitions"))
 
