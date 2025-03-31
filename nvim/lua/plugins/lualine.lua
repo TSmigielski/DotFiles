@@ -1,63 +1,91 @@
+local white = {
+   fg = "#f5f5f5"
+}
+
 return {
-    "nvim-lualine/lualine.nvim",
-    lazy = false,
-    opts = {
-        options = {
-            icons_enabled = true,
-            theme = "codedark",
-            component_separators = "",
-            section_separators = "",
-            disabled_filetypes = {
-                "git"
+   "nvim-lualine/lualine.nvim",
+   lazy = false,
+   dependencies = {
+      "folke/noice.nvim"
+   },
+   opts = {
+      options = {
+         icons_enabled = true,
+         theme = "codedark",
+         component_separators = "",
+         section_separators = "",
+         disabled_filetypes = {
+            "git"
+         },
+         ignore_focus = {
+            "query"
+         }
+      },
+      sections = {
+         lualine_c = {
+            {
+               "filename",
+               newfile_status = true,
+               symbols = {
+                  modified = '●',
+                  readonly = '[readonly]',
+                  unnamed = '[no name]',
+                  newfile = '[new]'
+               },
+               color = white
+            }
+         },
+         lualine_x = {
+            {
+               require("noice").api.statusline.mode.get,
+               cond = require("noice").api.statusline.mode.has,
+               color = { fg = "#ff9e64" }
+            }
+         },
+         lualine_y = {
+            {
+               "lsp_status",
+               color = white
             },
-            ignore_focus = {
-                "query"
-            }
-        },
-        sections = {
-            lualine_c = {
-                {
-                    "filename",
-                    newfile_status = true,
-                    symbols = {
-                        modified = '●',
-                        readonly = '[readonly]',
-                        unnamed = '[no name]',
-                        newfile = '[new]'
-                    }
-                }
+            {
+               "encoding",
+               color = white
             },
-            lualine_x = {
-                "lsp_status", 
-                "encoding",
-                "fileformat",
-                "filetype"
+            {
+               "fileformat",
+               color = white
+            },
+            {
+               "filetype",
+               color = white
+            },
+            "progress"
+         }
+      },
+      inactive_sections = {
+         lualine_x = {
+            "filetype"
+         }
+      },
+      tabline = {
+         lualine_a = { 
+            {
+               "buffers",
+               mode = 2,
+               symbols = {
+                  alternate_file = "^",
+               }
             }
-        },
-        inactive_sections = {
-            lualine_x = {
-                "filetype"
-            }
-        },
-        tabline = {
-            lualine_a = { 
-                {
-                    "buffers",
-                    mode = 2,
-                    symbols = {
-                        alternate_file = "^",
-                    }
-                }
-            }
-        },
-        extensions = {
-            "fugitive",
-            "fzf",
-            "lazy",
-            "man",
-            "mason",
-            "oil",
-            "trouble"
-        }
-    }
+         }
+      },
+      extensions = {
+         "fugitive",
+         "fzf",
+         "lazy",
+         "man",
+         "mason",
+         "oil",
+         "trouble"
+      }
+   }
 }

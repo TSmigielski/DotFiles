@@ -47,11 +47,11 @@ vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-fo
 vim.keymap.set("n", "gh", ":help <C-r><C-w><CR>", Desc("Goto help files (horizontal)"))
 vim.keymap.set("n", "gvh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (vertical)"))
 vim.keymap.set("n", "<leader>T", function()
-    local input = vim.fn.input("Enter tab width (or hit enter for 4): ")
+    local input = vim.fn.input("Enter tab width (or hit enter for 3): ")
     local value = tonumber(input)
 
     if (not value) then
-        value = 4
+        value = 3
     end
 
     vim.opt.tabstop = 8
@@ -94,8 +94,8 @@ vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buff
 
 -- Trouble
 vim.keymap.set("n", "<leader>tt", ":Trouble diagnostics toggle<CR>", Desc("Toggle diagnostics"))
-vim.keymap.set("n", "<leader>ts", ":Trouble symbols toggle pinned=true win.relative=win win.position=right<CR>", Desc("Toggle symbols"))
-vim.keymap.set("n", "<leader>tl", ":Trouble lsp toggle focus=false win.position=right<CR>", Desc("Toggle definitions"))
+vim.keymap.set("n", "<leader>ts", ":Trouble symbols toggle<CR>", Desc("Toggle symbols"))
+vim.keymap.set("n", "<leader>tl", ":Trouble lsp toggle win.type = split win.position = right<CR>", Desc("Toggle definitions"))
 
 -- VimArduino
 vim.keymap.set("n", "<leader>ai", "<cmd>ArduinoInfo<CR>", Desc("Display VimArduino plugin info"))
