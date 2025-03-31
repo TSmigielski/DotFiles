@@ -1,5 +1,6 @@
+require("config.options")
+require("config.functions")
 require("config.plugins")
 require("config.lsp")
+require("config.unmap")
 require("config.mappings")
-require("config.functions")
-require("config.options")

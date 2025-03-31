@@ -47,17 +47,18 @@ vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-fo
 vim.keymap.set("n", "gh", ":help <C-r><C-w><CR>", Desc("Goto help files (horizontal)"))
 vim.keymap.set("n", "gvh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (vertical)"))
 vim.keymap.set("n", "<leader>T", function()
-    local input = vim.fn.input("Enter tab width: ")
+    local input = vim.fn.input("Enter tab width (or hit enter for 4): ")
     local value = tonumber(input)
-    if (value) then
-	vim.opt.tabstop = 8
-	vim.opt.softtabstop = value
-	vim.opt.shiftwidth = value
-	vim.opt.expandtab = false
-	print("Tab width set to: " .. value)
-    else
-	print("Inavlid input, number expected.")
+
+    if (not value) then
+	value = 4
     end
+
+    vim.opt.tabstop = 8
+    vim.opt.softtabstop = value
+    vim.opt.shiftwidth = value
+    vim.opt.expandtab = false
+    print("Tab width set to: " .. value)
 end, Desc("Set tab width"))
 
 vim.keymap.set("n", "<leader>b", function()

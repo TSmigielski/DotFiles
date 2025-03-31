@@ -17,12 +17,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, getOpts("Quick documentation"))
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, getOpts("Goto definition"))
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, getOpts("Goto declaration"))
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, getOpts("Goto implementation"))
-    vim.keymap.set("n", "go", vim.lsp.buf.type_definition, getOpts("Goto type definition"))
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, getOpts("See references"))
+    vim.keymap.set("n", "gD", ":Trouble lsp_declarations<CR>", getOpts("Goto declaration"))
+    vim.keymap.set("n", "gd", ":Trouble lsp_definitions<CR>", getOpts("Goto definition"))
+    vim.keymap.set("n", "gi", ":Trouble lsp_implementations<CR>", getOpts("Goto implementation"))
     vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, getOpts("See signature"))
+    vim.keymap.set("n", "gr", ":Trouble lsp_references<CR>", getOpts("See references"))
+    vim.keymap.set("n", "go", ":Trouble lsp_type_definitions<CR>", getOpts("Goto type definition"))
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, getOpts("LSP rename"))
     vim.keymap.set({ "n", "x" }, "<F3>", vim.lsp.buf.format, getOpts("LSP format"))
     vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
