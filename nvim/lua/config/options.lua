@@ -24,6 +24,7 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 12
 vim.opt.sidescrolloff = 16
 vim.opt.isfname:append "@-@"
+vim.opt.iskeyword:remove { "_", "." }
 
 vim.opt.updatetime = 50
 vim.opt.mouse = ""

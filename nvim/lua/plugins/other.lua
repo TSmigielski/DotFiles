@@ -1,8 +1,21 @@
 local quickScopeKeys = { "f", "F", "t", "T" }
 
 return {
-   "stevearc/vim-arduino",
-   "rhysd/vim-clang-format",
+   {
+      "stevearc/vim-arduino",
+      ft = "arduino"
+   },
+
+
+   {
+      "rhysd/vim-clang-format",
+      ft = {
+         "arduino",
+         "c",
+         "cpp",
+         "h"
+      }
+   },
 
    {
       "tpope/vim-fugitive",
@@ -27,7 +40,7 @@ return {
 
    {
       "stevearc/oil.nvim",
-      event = "VeryLazy",
+      lazy = false,
       opts = {
          view_options = {
             show_hidden = true

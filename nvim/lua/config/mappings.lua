@@ -119,6 +119,11 @@ vim.keymap.set("n", "<leader>tl", function ()
    trouble.toggle(lsp)
 end, Desc("Toggle definitions"))
 
+vim.keymap.set("n", "<leader>tc", function ()
+   trouble.close("lsp")
+   trouble.close("symbols")
+end, Desc("Close windows"))
+
 -- VimArduino
 local inoGroup = vim.api.nvim_create_augroup("ino_autocommands", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {

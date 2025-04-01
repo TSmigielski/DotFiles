@@ -1,6 +1,7 @@
 return {
    {
       "williamboman/mason.nvim",
+      cmd = "Mason",
       opts = {
          registries = {
             "github:mason-org/mason-registry",

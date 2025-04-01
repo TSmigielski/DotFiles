@@ -34,11 +34,12 @@ return {
             highlight = highlight,
             show_end = false,
             include = {
-               node_type = { 
+               node_type = {
                   c_sharp = {
                      "class_declaration",
                      "method_declaration",
                      "variable_declaration",
+                     "local_function_statement",
                      "if_statement",
                      "for_statement",
                      "foreach_statement",
