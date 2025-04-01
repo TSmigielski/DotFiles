@@ -42,9 +42,6 @@ return {
             },
             lsp = {
                open_no_results = true
-            },
-            symbols = {
-               auto_open = true
             }
          }
       }

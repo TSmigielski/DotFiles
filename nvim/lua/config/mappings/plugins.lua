@@ -5,7 +5,9 @@ vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
 vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
 
 --- Lualine ---
+local buffers = { }
 local index = 1;
+
 local function GotoIndex(newIndex)
    if (index == newIndex) then
       return
@@ -15,18 +17,45 @@ local function GotoIndex(newIndex)
    vim.cmd("LualineBuffersJump " .. index)
 end
 
-local GetListedBuffers = function()
-    return vim.tbl_filter(function(bufnr)
-       return vim.api.nvim_get_option_value("buflisted", { buf = bufnr })
-    end, vim.api.nvim_list_bufs())
+local IsBufListed = function(bufNr)
+   return vim.api.nvim_get_option_value("buflisted", { buf = bufNr })
 end
 
 vim.api.nvim_create_autocmd("BufReadPre", {
-   pattern = {"*"},
-   callback = function()
-      if vim.bo.buflisted then
-         index = #GetListedBuffers()
+   callback = function(args)
+      if (IsBufListed(args.buf)) then
+         if not (vim.tbl_contains(buffers, args.buf)) then
+            table.insert(buffers, args.buf)
+         end
+         index = #buffers
       end
+   end
+})
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+   callback = function(args)
+      if (IsBufListed(args.buf)) then
+         -- Find (& set) the index
+         for i, buf in ipairs(buffers) do
+            if (buf == args.buf) then
+               index = i
+               return
+            end
+         end
+
+         -- Fallback for race conditions (if buffer wasn't added in BufReadPre)
+         table.insert(buffers, args.buf)
+         index = #buffers
+      end
+   end
+})
+
+vim.api.nvim_create_autocmd("BufDelete", {
+   callback = function(args)
+      buffers = vim.tbl_filter(function(buf)
+         return vim.api.nvim_buf_is_valid(buf) and buf ~= args.buf
+      end, buffers)
+      index = math.min(index, #buffers)
    end
 })
 
@@ -42,7 +71,7 @@ end, Desc("Goto buffer"))
 
 vim.keymap.set("n", "<TAB>", function()
    index = index + 1
-   if (index > #GetListedBuffers()) then
+   if (index > #buffers) then
       index = 1
    end
    GotoIndex()
@@ -51,7 +80,7 @@ end, Desc("Next buffer"))
 vim.keymap.set("n", "<S-TAB>", function()
    index = index - 1
    if (index < 1) then
-      index = #GetListedBuffers()
+      index = #buffers
    end
    GotoIndex()
 end, Desc("Previous buffer"))
