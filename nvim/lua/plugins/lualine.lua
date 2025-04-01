@@ -26,6 +26,7 @@ return {
             {
                "filename",
                newfile_status = true,
+               path = 4,
                symbols = {
                   modified = '●',
                   readonly = '[readonly]',
