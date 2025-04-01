@@ -32,13 +32,7 @@ return {
          modes = {
             diagnostics = {
                auto_close = true,
-               warn_no_results = false,
-               preview = {
-                  type = "split",
-                  relative = "win",
-                  position = "right",
-                  size = 0.4
-               }
+               warn_no_results = false
             },
             lsp = {
                open_no_results = true
