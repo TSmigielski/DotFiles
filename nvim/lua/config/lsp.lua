@@ -17,12 +17,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, getOpts("Quick documentation"))
+      vim.keymap.set("n", "<A-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
+      vim.keymap.set({"n", "i"}, "<A-h>", vim.lsp.buf.signature_help, getOpts("Signature help"))
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, getOpts("Goto definition"))
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, getOpts("Goto declaration"))
+      vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, getOpts("Goto type definition"))
       vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, getOpts("LSP rename"))
       vim.keymap.set({ "n", "x" }, "<F3>", vim.lsp.buf.format, getOpts("LSP format"))
       vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
       vim.keymap.set("n", "<A-CR>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
-      vim.keymap.set("n", "<A-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
-      vim.keymap.set({"n", "i"}, "<A-h>", vim.lsp.buf.signature_help, getOpts("Signature help"))
    end,
 })
 
