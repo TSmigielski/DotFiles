@@ -29,9 +29,14 @@ vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
       end
    end
 })
-vim.api.nvim_create_autocmd({"WinLeave", "BufLeave"}, {
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
    group = "CursorLine",
    callback = function()
       vim.wo.cursorline = false
    end
+})
+
+-- Codelens
+vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+   callback = vim.lsp.codelens.refresh
 })

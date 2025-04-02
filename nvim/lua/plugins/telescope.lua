@@ -1,3 +1,5 @@
+local openWithTrouble = require("trouble.sources.telescope").open
+
 return {
    {
       "nvim-telescope/telescope.nvim",
@@ -25,9 +27,19 @@ return {
                   ["<C-d>"] = false,
                   ["<C-j>"] = "move_selection_next",
                   ["<C-k>"] = "move_selection_previous",
+                  ["<C-t>"] = openWithTrouble
                },
-            },
+               n = {
+                  ["<C-t>"] = openWithTrouble
+               }
+            }
          }
-      }
+      },
+      config = function(plugin, opts)
+         local telescope = require("telescope")
+         telescope.setup(opts)
+         telescope.load_extension("fzf")
+         telescope.load_extension("file_browser")
+      end
    }
 }

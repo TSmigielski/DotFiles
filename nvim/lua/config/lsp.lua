@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
       vim.keymap.set("n", "<A-CR>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
       vim.keymap.set("n", "<A-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
+      vim.keymap.set({"n", "i"}, "<A-h>", vim.lsp.buf.signature_help, getOpts("Signature help"))
    end,
 })
 
@@ -39,6 +40,9 @@ local mappings = {
    ["<Tab>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
    ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+   ["<C-q>"] = cmp.mapping(cmp.mapping.close_docs(), { "i", "c" }),
+   ["<CS-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+   ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 
    -- Confirm & insert dot
    ["."] = cmp.mapping(function(fallback)
