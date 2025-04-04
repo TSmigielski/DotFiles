@@ -12,6 +12,12 @@ return {
          ["On"] = "Off",
          ["Show"] = "Hide",
          ["show"] = "hide",
+         ["open"] = "close",
+         ["Open"] = "Close",
+         ["enable"] = "disable",
+         ["Enable"] = "Disable",
+         ["enabled"] = "disabled",
+         ["Enabled"] = "Disabled",
       }
    }
 }
