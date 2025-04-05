@@ -22,14 +22,15 @@ return {
    {
       "lewis6991/gitsigns.nvim",
       event = "VeryLazy",
-      opts = { }
+      opts = {
+         sign_priority = 100
+      }
    },
 
    {
       "folke/snacks.nvim",
       priority = 1000,
       lazy = false,
-      ---@type snacks.Config
       opts = {
          dashboard = { enabled = true },
          image = { enabled = true },

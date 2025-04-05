@@ -1,92 +1,16 @@
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+--- DAP ---
+vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>", Desc("Toggle breakpoint"))
+vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>", Desc("Continue debugging"))
+vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>", Desc("Terminate debugging"))
+vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>", Desc("Step over"))
 
-vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
+--- Noice ---
+vim.keymap.set("n", "<leader>nh", ":NoicePick<CR>", Desc("Notification history"))
+vim.keymap.set("n", "<leader>nl", ":NoiceLast<CR>", Desc("Last notification"))
+vim.keymap.set("n", "<leader>nd", ":NoiceDismiss<CR>", Desc("Dismiss notifications"))
+vim.keymap.set("n", "<leader>ne", ":NoiceErrors<CR>", Desc("Show last errors"))
 
-vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
-
---- Lualine ---
-local buffers = { }
-local index = 1;
-
-local function GotoIndex(newIndex)
-   if (index == newIndex) then
-      return
-   elseif (newIndex) then
-      index = newIndex
-   end
-   vim.cmd("LualineBuffersJump " .. index)
-end
-
-local IsBufListed = function(bufNr)
-   return vim.api.nvim_get_option_value("buflisted", { buf = bufNr })
-end
-
-vim.api.nvim_create_autocmd("BufReadPre", {
-   callback = function(args)
-      if (IsBufListed(args.buf)) then
-         if not (vim.tbl_contains(buffers, args.buf)) then
-            table.insert(buffers, args.buf)
-         end
-         index = #buffers
-      end
-   end
-})
-
-vim.api.nvim_create_autocmd("BufWinEnter", {
-   callback = function(args)
-      if (IsBufListed(args.buf)) then
-         -- Find (& set) the index
-         for i, buf in ipairs(buffers) do
-            if (buf == args.buf) then
-               index = i
-               return
-            end
-         end
-
-         -- Fallback for race conditions (if buffer wasn't added in BufReadPre)
-         table.insert(buffers, args.buf)
-         index = #buffers
-      end
-   end
-})
-
-vim.api.nvim_create_autocmd("BufDelete", {
-   callback = function(args)
-      buffers = vim.tbl_filter(function(buf)
-         return vim.api.nvim_buf_is_valid(buf) and buf ~= args.buf
-      end, buffers)
-      index = math.min(index, #buffers)
-   end
-})
-
-vim.keymap.set("n", "<leader>b", function()
-   local input = vim.fn.input("Enter buffer index: ")
-   local value = tonumber(input)
-   if (value) then
-      GotoIndex(value)
-   else
-      print("Inavlid input, number expected.")
-   end
-end, Desc("Goto buffer"))
-
-vim.keymap.set("n", "<TAB>", function()
-   index = index + 1
-   if (index > #buffers) then
-      index = 1
-   end
-   GotoIndex()
-end, Desc("Next buffer"))
-
-vim.keymap.set("n", "<S-TAB>", function()
-   index = index - 1
-   if (index < 1) then
-      index = #buffers
-   end
-   GotoIndex()
-end, Desc("Previous buffer"))
----
-
--- Telescope
+--- Telescope --- 
 local telescope = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", function()
    -- Check if in git repository
@@ -97,7 +21,7 @@ vim.keymap.set("n", "<leader>ff", function()
       telescope.find_files()
    end
 end, Desc("Find file (Telescope)"))
-vim.keymap.set("n", "<leader><leader>", telescope.buffers, Desc("Find open buffer (Telescope)"))
+vim.keymap.set("n", "<leader>bb", telescope.buffers, Desc("Find open buffer (Telescope)"))
 vim.keymap.set("n", "<leader>fg", telescope.live_grep, Desc("Live grep (Telescope)"))
 vim.keymap.set("n", "<leader>/", function()
    telescope.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
@@ -107,7 +31,7 @@ vim.keymap.set("n", "<leader>/", function()
 end, Desc("Find in current buffer (Telescope)"))
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", Desc("File browser (Telescope)"))
 
--- Trouble
+--- Trouble --- 
 local trouble = require("trouble")
 vim.keymap.set("n", "<leader>tt", ":Trouble diagnostics toggle<CR>", Desc("Toggle diagnostics"))
 vim.keymap.set("n", "<leader>ts", function ()
@@ -139,7 +63,7 @@ vim.keymap.set("n", "<leader>tc", function ()
    trouble.close("symbols")
 end, Desc("Close windows"))
 
--- VimArduino
+--- VimArduino ---
 local inoGroup = vim.api.nvim_create_augroup("ino_autocommands", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
    group = inoGroup,
@@ -156,3 +80,8 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.keymap.set("n", "<leader>al", "<cmd>ArduinoUploadAndSerial<CR>", Desc("Build, upload, and connect to the board over serial"))
    end,
 })
+
+--- Other ---
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
+vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))

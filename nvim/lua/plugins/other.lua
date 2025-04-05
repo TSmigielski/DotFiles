@@ -6,7 +6,6 @@ return {
       ft = "arduino"
    },
 
-
    {
       "rhysd/vim-clang-format",
       ft = {
@@ -80,5 +79,19 @@ return {
          vim.g.mkdp_filetypes = { "markdown" }
       end,
       ft = { "markdown" },
+   },
+
+   {
+      "tzachar/local-highlight.nvim",
+      event = "BufRead",
+      opts = {
+         animate = {
+            duration = {
+               step = 10,
+               total = 50
+            }
+         },
+         debounce_timeout = 80
+      }
    }
 }

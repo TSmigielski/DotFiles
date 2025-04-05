@@ -2,7 +2,7 @@
 vim.api.nvim_create_autocmd("BufReadPost", {
    pattern = {"*"},
    callback = function()
-      if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+      if (vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$")) then
          vim.api.nvim_exec("normal! g'\"",false)
       end
    end
@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
    group = "CursorLine",
    callback = function()
       -- Check if the current window is a floating window
-      if vim.api.nvim_win_get_config(0).relative == "" then
+      if (vim.api.nvim_win_get_config(0).relative == "") then
          vim.wo.cursorline = true
       end
    end

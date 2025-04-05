@@ -1,23 +1,14 @@
 return {
-   "nguyenvukhang/nvim-toggler",
+   -- "nguyenvukhang/nvim-toggler",
+   -- "/home/ts-pl/Projects/OpenSource/Forks/nvim-toggler/lua/nvim-toggler.lua",
+   dir = "/home/ts-pl/Projects/OpenSource/Forks/nvim-toggler",
    keys = "<leader>i",
    opts = {
       inverses = {
-         ["up"] = "down",
          ["top"] = "bottom",
-         ["left"] = "right",
          ["low"] = "high",
-         ["LOW"] = "HIGH",
-         ["on"] = "off",
-         ["On"] = "Off",
-         ["Show"] = "Hide",
          ["show"] = "hide",
          ["open"] = "close",
-         ["Open"] = "Close",
-         ["enable"] = "disable",
-         ["Enable"] = "Disable",
-         ["enabled"] = "disabled",
-         ["Enabled"] = "Disabled",
       }
    }
 }

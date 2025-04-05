@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, getOpts("Quick documentation"))
-      vim.keymap.set("n", "<A-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
+      vim.keymap.set("n", "<AS-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
       vim.keymap.set({"n", "i"}, "<A-s>", vim.lsp.buf.signature_help, getOpts("Signature help"))
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, getOpts("Goto definition"))
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, getOpts("Goto declaration"))

@@ -24,14 +24,13 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 12
 vim.opt.sidescrolloff = 16
 vim.opt.isfname:append "@-@"
-vim.opt.iskeyword:remove { "_", "." }
 
 vim.opt.updatetime = 50
 vim.opt.mouse = ""
 vim.opt.termguicolors = true
 
 vim.opt.breakindent = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "auto:1-3"
 vim.opt.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 

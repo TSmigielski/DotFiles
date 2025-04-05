@@ -4,6 +4,7 @@ function Desc (desc)
 end
 
 require("config.mappings.basic")
+require("config.mappings.lualine")
 require("config.mappings.plugins")
 require("config.mappings.advanced")
 require("config.mappings.unmap")
