@@ -85,12 +85,12 @@ return {
       },
       extensions = {
          "fugitive",
-         "fzf",
          "lazy",
          "man",
          "mason",
          "oil",
-         "trouble"
+         "trouble",
+         "nvim-dap-ui"
       }
    }
 }

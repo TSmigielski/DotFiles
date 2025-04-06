@@ -1,8 +1,11 @@
 --- DAP ---
-vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>", Desc("Toggle breakpoint"))
-vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>", Desc("Continue debugging"))
-vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>", Desc("Terminate debugging"))
-vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>", Desc("Step over"))
+vim.keymap.set("n", "<F4>", ":DapToggleBreakpoint<CR>", Desc("Toggle breakpoint"))
+vim.keymap.set("n", "<F5>", ":DapContinue<CR>", Desc("Continue debugging"))
+vim.keymap.set("n", "<S-F5>", ":DapTerminate<CR>", Desc("Terminate debugging"))
+vim.keymap.set("n", "<F10>", ":DapStepOver<CR>", Desc("Step over"))
+vim.keymap.set("n", "<F11>", ":DapStepInto<CR>", Desc("Step into"))
+vim.keymap.set("n", "<S-F11>", ":DapStepOut<CR>", Desc("Step out"))
+-- require("osv").launch({port = 8086})
 
 --- Noice ---
 vim.keymap.set("n", "<leader>nh", ":NoicePick<CR>", Desc("Notification history"))

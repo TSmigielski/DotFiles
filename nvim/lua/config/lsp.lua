@@ -24,7 +24,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, getOpts("Goto type definition"))
       vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, getOpts("LSP rename"))
       vim.keymap.set({ "n", "x" }, "<F3>", vim.lsp.buf.format, getOpts("LSP format"))
-      vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
       vim.keymap.set("n", "<A-CR>", vim.lsp.buf.code_action, getOpts("LSP code actions"))
    end,
 })

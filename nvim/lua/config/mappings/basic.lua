@@ -23,7 +23,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", Desc("Move selected text up a line"
 -- Register shenanigans
 vim.keymap.set("x", "<leader>p", [["_dP]], Desc("Paste without losing register"))
 vim.keymap.set({"n","v"}, "<leader>y", [["+y]], Desc("Yank into system clipboard"))
-vim.keymap.set({"n","v"}, "<leader>D", [["_d]], Desc("Delete to discard register"))
+vim.keymap.set({"n","v"}, "<leader>d", [["_d]], Desc("Delete to discard register"))
 
 -- Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
