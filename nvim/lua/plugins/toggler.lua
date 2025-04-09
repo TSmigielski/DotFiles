@@ -16,7 +16,8 @@ return {
          ["top"] = "bottom",
          ["low"] = "high",
          ["show"] = "hide",
-         ["open"] = "close"
+         ["open"] = "close",
+         ["private"] = "public"
       }
    }
 }

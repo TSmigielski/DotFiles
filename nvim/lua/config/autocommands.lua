@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Auto-show/hide cursorline on window enter/exit
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
-vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
+vim.api.nvim_create_autocmd({"WinEnter", "BufEnter", "FocusGained" }, {
    group = "CursorLine",
    callback = function()
       -- Check if the current window is a floating window
@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
       end
    end
 })
-vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FocusLost" }, {
    group = "CursorLine",
    callback = function()
       vim.wo.cursorline = false
