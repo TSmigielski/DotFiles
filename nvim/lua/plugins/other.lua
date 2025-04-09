@@ -41,8 +41,24 @@ return {
       "stevearc/oil.nvim",
       lazy = false,
       opts = {
+         skip_confirm_for_simple_edits = true,
+         watch_for_changes = true,
          view_options = {
-            show_hidden = true
+            case_insensitive = true,
+            is_hidden_file = function(name, bufnr)
+               local patterns = {
+                  "^%.",
+                  "%.uid$"
+               }
+
+               for i, pattern in ipairs(patterns) do
+                  if (name:match(pattern) ~= nil) then
+                     return true
+                  end
+               end
+
+               return false
+            end
          }
       }
    },
