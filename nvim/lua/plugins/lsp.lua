@@ -56,6 +56,22 @@ return {
    {
       "seblyng/roslyn.nvim",
       ft = "cs",
-      opts = {}
+      opts = { }
+   },
+
+   {
+      "GodOfAvacyn/gdshader-lsp",
+      ft = "gdshader",
+      config = function (plugin, opts)
+         function gdshader()
+            vim.lsp.start {
+               name = "gdshader-lsp",
+               cmd = {
+                  "/usr/local/bin/gdshader-lsp",
+               },
+               capabilities = vim.lsp.protocol.make_client_capabilities()
+            }
+         end
+      end
    }
 }

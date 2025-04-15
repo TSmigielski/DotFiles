@@ -21,5 +21,22 @@ return {
       dependencies = {
          "nvim-treesitter/nvim-treesitter"
       }
+   },
+
+   {
+      "GodOfAvacyn/tree-sitter-gdshader",
+      ft = "gdshader",
+      config = function(plugin, opts)
+         local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+         parser_config.gdshader = {
+            install_info = {
+               url = "/home/ts-pl/.local/share/nvim/lazy/tree-sitter-gdshader",
+               files = {
+                  "src/parser.c"
+               }
+            },
+            filetype = "gdshader"
+         }
+      end
    }
 }
