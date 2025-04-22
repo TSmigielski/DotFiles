@@ -15,24 +15,42 @@ vim.keymap.set("n", "<leader>ne", ":NoiceErrors<CR>", Desc("Show last errors"))
 
 --- Telescope --- 
 local telescope = require("telescope.builtin")
+vim.keymap.set("n", "<leader>bb", telescope.buffers, Desc("Find open buffer (Telescope)"))
+vim.keymap.set("n", "<leader>fg", telescope.live_grep, Desc("Live grep (Telescope)"))
+vim.keymap.set("n", "<space>fr", telescope.resume, Desc("Telescope resume"))
 vim.keymap.set("n", "<leader>ff", function()
    -- Check if in git repository
-   local inGit = vim.fn.system("git rev-parse --git-dir 2> /dev/null")
+   vim.fn.system("git rev-parse --git-dir 2> /dev/null")
    if (vim.v.shell_error == 0) then
       telescope.git_files()
    else
       telescope.find_files()
    end
 end, Desc("Find file (Telescope)"))
-vim.keymap.set("n", "<leader>bb", telescope.buffers, Desc("Find open buffer (Telescope)"))
-vim.keymap.set("n", "<leader>fg", telescope.live_grep, Desc("Live grep (Telescope)"))
-vim.keymap.set("n", "<leader>/", function()
-   telescope.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
-      winblend = 10,
-      previewer = false,
-   })
-end, Desc("Find in current buffer (Telescope)"))
-vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", Desc("File browser (Telescope)"))
+
+local prevFileTypes = "";
+vim.keymap.set("n", "<space>ft", function()
+   local inputText
+   local fileTypes
+
+   if (prevFileTypes == "") then
+      inputText = "Enter file types (seperated with ,): "
+   else
+      inputText = "Enter file types (previous `" .. prevFileTypes .. "`): "
+   end
+
+   local input = vim.fn.input(inputText)
+   if (input ~= "") then
+      fileTypes = input
+   elseif (prevFileTypes == "") then
+      fileTypes = "*"
+   else
+      fileTypes = prevFileTypes
+   end
+
+   telescope.live_grep({glob_pattern = "*.{" .. fileTypes .. "}"})
+   prevFileTypes = fileTypes
+end, Desc("Live grep [ft] (Telescope)"))
 
 --- Trouble --- 
 local trouble = require("trouble")
