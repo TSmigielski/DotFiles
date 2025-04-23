@@ -47,14 +47,14 @@ local mappings = {
    ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 
    -- Confirm & insert dot
-   ["."] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-         cmp.confirm({ select = true })
-         vim.fn.feedkeys(".", "n")
-      else
-         fallback()
-      end
-   end, { "i", "c" })
+   -- ["."] = cmp.mapping(function(fallback)
+   --    if cmp.visible() then
+   --       cmp.confirm({ select = true })
+   --       vim.fn.feedkeys(".", "n")
+   --    else
+   --       fallback()
+   --    end
+   -- end, { "i", "c" })
 }
 
 cmp.setup({

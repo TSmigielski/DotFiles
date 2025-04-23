@@ -1,6 +1,7 @@
 return {
    -- "nguyenvukhang/nvim-toggler",
-   dir = "/home/ts-pl/Projects/OpenSource/Forks/nvim-toggler",
+   "TSmigielski/nvim-toggler",
+   -- dir = "/home/ts-pl/Projects/OpenSource/Forks/nvim-toggler",
    keys = "<leader>i",
    opts = {
       remove_default_inverses = true,
