@@ -108,6 +108,10 @@ return {
             }
          },
          debounce_timeout = 80
-      }
+      },
+      config = function (plugin, opts)
+         require("local-highlight").setup(opts)
+         vim.cmd("highlight LocalHighlight guifg=nil")
+      end
    }
 }
