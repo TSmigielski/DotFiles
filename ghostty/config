@@ -1,0 +1,7 @@
+theme = Chester
+font-family = FiraCode Nerd Font
+font-size = 12
+mouse-hide-while-typing = true
+window-padding-balance = true
+window-new-tab-position = end
+focus-follows-mouse = true
