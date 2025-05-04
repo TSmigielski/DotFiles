@@ -32,5 +32,5 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("i", "<C-c>", "<esc>") -- Ctrl + C == Esc
 vim.keymap.set("n", "Q", "<nop>") -- Disable Q
 vim.keymap.set("n", "J", "mzJ`z") -- Keep cursor in place during J
-vim.keymap.set("n", "gh", ":help <C-r><C-w><CR>", Desc("Goto help files (horizontal)"))
-vim.keymap.set("n", "gvh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (vertical)"))
+vim.keymap.set("n", "ghs", ":help <C-r><C-w><CR>", Desc("Goto help files (bottom)"))
+vim.keymap.set("n", "ghh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (right)"))

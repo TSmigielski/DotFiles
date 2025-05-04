@@ -4,6 +4,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc =
 
 vim.keymap.set({"n","v"}, "<Space>", "<Nop>", { silent = true }) -- Disable space action (leave it for leader)
 
+vim.keymap.set("v", "/", '"vy/<C-r>v<CR>', Desc("Search selected text"))
+
 vim.keymap.set("n", "<leader>T", function()
    local input = vim.fn.input("Enter tab width (or hit enter for 3): ")
    local value = tonumber(input)
