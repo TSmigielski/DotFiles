@@ -4,13 +4,12 @@ return {
       main = "nvim-treesitter.configs",
       event = { "BufReadPre", "BufNewFile" },
       opts = {
-         ensure_installed = { "lua", "javascript", "vimdoc", "vim", "html", "css", "bash", "json", "passwd", "xml", "yaml", "regex" },
+         ensure_installed = { "lua", "javascript", "vimdoc", "vim", "html", "css", "bash", "json", "yaml" },
          auto_install = true,
          sync_install = false,
          ignore_install = {},
          modules = {},
-         highlight = { enable = true },
-         indent = { enable = true },
+         highlight = { enable = true }
       },
       build = ":TSUpdate"
    },

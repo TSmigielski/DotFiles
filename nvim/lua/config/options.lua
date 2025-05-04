@@ -12,6 +12,7 @@ vim.opt.expandtab = true
 
 vim.opt.ignorecase = true
 vim.opt.smartindent = true
+vim.o.indentexpr = ""
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -30,7 +31,7 @@ vim.opt.mouse = ""
 vim.opt.termguicolors = true
 
 vim.opt.breakindent = true
-vim.opt.signcolumn = "auto:1-3"
+vim.opt.signcolumn = "auto:1-2"
 vim.opt.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 
