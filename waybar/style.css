@@ -1,6 +1,5 @@
 * {
     border: none;
-    border-radius: 0;
     font-family: FiraCode Nerd Font;
     min-height: 20px;
 }
@@ -15,7 +14,6 @@ window#waybar.hidden {
 
 #workspaces {
     margin-right: 10px;
-    border-radius: 10px;
     transition: none;
     background: #383c4a;
 }
@@ -36,7 +34,6 @@ window#waybar.hidden {
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    border-radius: inherit;
     color: #383c4a;
     background: #7c818c;
 }
@@ -53,7 +50,6 @@ window#waybar.hidden {
     margin-right: 10px;
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -62,7 +58,6 @@ window#waybar.hidden {
 #custom-updates {
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -72,7 +67,6 @@ window#waybar.hidden {
     margin-right: 10px;
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -81,7 +75,6 @@ window#waybar.hidden {
 #cpu {
     padding-left: 12px;
     padding-right: 6px;
-    border-radius: 10px 0 0 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -91,7 +84,6 @@ window#waybar.hidden {
     margin-right: 10px;
     padding-left: 6px;
     padding-right: 12px;
-    border-radius: 0 10px 10px 0;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -100,7 +92,6 @@ window#waybar.hidden {
 #network {
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -114,7 +105,6 @@ window#waybar.hidden {
     margin-right: 10px;
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -124,7 +114,6 @@ window#waybar.hidden {
     margin-right: 10px;
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -139,7 +128,6 @@ window#waybar.hidden {
     margin-right: 10px;
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -149,7 +137,6 @@ window#waybar.hidden {
     margin-right: 10px;
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -178,7 +165,6 @@ window#waybar.hidden {
 #clock {
     padding-left: 12px;
     padding-right: 12px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
