@@ -76,12 +76,14 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-alias treeg="tree --gitignore"
+alias tree="tree | less"
+alias treeg="tree --gitignore | less"
 
 # System dependent
 alias ph="grep -i installed /var/log/pacman.log" # pacman history
 alias bc="bc -q" # Basic calculator
 alias cal="cal -w" # Calendar
+alias ranger="yazi" # Ranger replacement
 
 # Eza
 alias eza="eza --git"

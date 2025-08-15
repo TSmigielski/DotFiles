@@ -113,5 +113,20 @@ return {
          require("local-highlight").setup(opts)
          vim.cmd("highlight LocalHighlight guifg=nil")
       end
+   },
+
+   {
+      "uga-rosa/ccc.nvim",
+      lazy = false,
+      opts = {
+         highlighter = {
+            auto_enable = true,
+            lsp = true
+         }
+      },
+      config = function (plugin, opts)
+         vim.opt.termguicolors = true;
+         require("ccc").setup(opts)
+      end
    }
 }

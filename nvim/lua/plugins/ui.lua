@@ -33,7 +33,6 @@ return {
       lazy = false,
       opts = {
          dashboard = { enabled = true },
-         image = { enabled = true },
          input = { enabled = true },
          picker = { enabled = true },
          styles = {

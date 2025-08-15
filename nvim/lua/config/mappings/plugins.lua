@@ -106,3 +106,4 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
 vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
+vim.keymap.set("n", "<leader>c", ":CccPick<CR>", Desc("Color picker"))
