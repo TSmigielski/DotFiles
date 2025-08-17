@@ -1,0 +1,41 @@
+[core]
+	autocrlf = input
+	editor = nvim
+	pager = delta
+
+[user]
+	name = Tomasz Śmigielski
+	email = tsmigiel@ik.me
+	signingkey = /home/ts-pl/.ssh/id_rsa
+
+[init]
+	defaultBranch = main
+
+[interactive]
+	diffFilter = delta --color-only
+
+[pull]
+	rebase = true
+
+[diff]
+	prompt = true
+	tool = nvimdiff
+
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[gpg]
+	format = ssh
+
+[delta]
+	navigate = true
+	dark = true
+	side-by-side = true
+	; features = arctic-fox
+	syntax-theme = Visual Studio Dark+
+
+[merge]
+	conflictstyle = zdiff3
+
+[include]
+	path = /home/ts-pl/Projects/OpenSource/delta/themes.gitconfig

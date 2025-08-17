@@ -1,0 +1,32 @@
+[global]
+    monitor = 0
+    font = FiraCode Nerd Font 10
+    width = (250, 400)
+    offset = 32x32
+    frame_width = 1
+    separator_color = auto
+    idle_threshold = 200
+    markup = yes
+    format = "<b>%s %p</b>\n%b\n%p"
+    alignment = center
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
+
+    background = "#2E3440DD"
+    foreground = "#D8DEE9"
+
+
+[urgency_low]
+    frame_color = "#bec8da"
+
+[urgency_normal]
+    frame_color = "#6889b1"
+
+[urgency_critical]
+    frame_color = "#c84141"
+    timeout = 0
+
+
+[slack]
+    appname = "Slack"
+    summary = "*"
+    script = ~/Utilities/dunst-urgent-notification.sh

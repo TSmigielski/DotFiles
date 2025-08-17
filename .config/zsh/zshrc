@@ -1,0 +1,106 @@
+# Syntax highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Auto-suggestion
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd completion)
+
+# jeffreytse/zsh-vi-mode
+source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# Auto-complete
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+bindkey '^I' menu-complete
+bindkey "$terminfo[kcbt]" reverse-menu-complete
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**'
+zstyle ':autocomplete:*' min-input 3
+zstyle ':autocomplete:*' delay 0.2
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+autoload -U history-search-end
+
+# Yazi shell wrapper
+function y() {
+   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+   yazi "$@" --cwd-file="$tmp"
+   IFS= read -r -d '' cwd < "$tmp"
+   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+   rm -f -- "$tmp"
+}
+
+# Misc
+setopt auto_cd
+WORDCHARS=
+
+# NVM
+if [[ -r /usr/share/nvm/init-nvm.sh ]]; then
+   source /usr/share/nvm/init-nvm.sh
+fi
+
+
+### Env ###
+export PATH=$PATH:~/.local/bin:~/.cargo/bin:~/.symfony5/bin
+export EDITOR=nvim
+export VISUAL=nvim
+export MANPAGER="nvim +Man!"
+export KEYTIMEOUT=1
+export TERM=xterm-256color
+export DOTNET_CLI_UI_LANGUAGE=en
+export DOCKER_HOST=unix:///var/run/docker.sock
+
+
+### Aliases ###
+# Git
+source ~/.zsh/omz.lib.git.zsh
+source ~/.zsh/omz.git.plugin.zsh
+alias gf="gfa" # gf="git fetch" +a="--all --prune"
+alias config="git --git-dir=$HOME/.DotFiles/.git/ --work-tree=$HOME"
+
+# General
+alias sudo="sudo "
+alias open="xdg-open"
+alias o="open"
+alias vim="nvim"
+alias so="source"
+alias h="history"
+alias he="$EDITOR $HISTFILE" # History edit
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias tree="tree | less"
+alias treeg="tree --gitignore | less"
+
+# System dependent
+alias ph="grep -i installed /var/log/pacman.log" # pacman history
+alias bc="bc -q" # Basic calculator
+alias cal="cal -w" # Calendar
+alias ranger="yazi" # Ranger replacement
+
+# Eza
+alias eza="eza --git"
+alias ls="eza --icons"
+alias l="eza -laF auto"
+alias ll="eza -laGF auto"
+
+# Other programs
+alias nightlight="redshift -x && redshift -O $1"
+alias cmatrix="cmatrix -abu6"
+alias waybar="killall waybar; waybar"
+alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
+
+### Local file ###
+if [[ -r ~/.config/zsh/local.zsh ]]; then
+   source ~/.config/zsh/local.zsh
+fi
+
+# Starship theme
+eval "$(starship init zsh)"
