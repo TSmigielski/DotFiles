@@ -1,0 +1,14 @@
+# /dev/nvme0n1p3 LABEL=Root
+UUID=948a9675-579f-4e59-8266-126c032cc251 /           btrfs rw,relatime,ssd,discard=async,space_cache=v2,subvolid=5,subvol=/ 0 0
+
+# /dev/nvme0n1p1
+UUID=D3DE-503E                            /boot       vfat  rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 2
+
+# /dev/nvme1n1p1 LABEL=home
+UUID=a9ca6626-4659-4f07-b215-a30f9c99b191 /mnt/evo970 btrfs rw,relatime,ssd,discard=async,space_cache=v2,subvolid=5,subvol=/ 0 0
+
+# /dev/nvme0n1p2 LABEL=Swap
+UUID=f25afad9-54dd-4cb3-9c75-a08da18bda11 none        swap  defaults 0 0
+
+# /dev/sdb1 LABEL="Slow Data"
+UUID=2CBE1532BE14F5D4                     /mnt/data   ntfs  rw,user,uid=1000,gid=1000,dmask=022,fmask=133 0 0

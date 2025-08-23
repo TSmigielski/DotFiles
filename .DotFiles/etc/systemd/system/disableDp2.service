@@ -1,0 +1,11 @@
+[Unit]
+Description=Turn off (sleep) DisplayPort2 (secondy monitor)
+After=multi-user.target
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=/usr/bin/ddcutil setvcp -d 2 0xD6 4
+
+[Install]
+WantedBy=multi-user.target
