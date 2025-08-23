@@ -46,8 +46,6 @@ behind = '⇣${count}'
 disabled = false
 format = '[$status $symbol ]($style)'
 symbol = "X"
-success_symbol = ""
-success_style = "green bold"
 
 [fill]
 symbol = " "
