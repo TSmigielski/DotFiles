@@ -2,7 +2,6 @@
 
 cd ~
 ln -s .config/zsh/zshrc .zshrc
-git clone https://github.com/romkatv/powerlevel10k.git
 mkdir .zsh
 cd .zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions
