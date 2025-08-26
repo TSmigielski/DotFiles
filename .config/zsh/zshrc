@@ -87,7 +87,6 @@ alias tree="tree | less"
 alias treeg="tree --gitignore | less"
 
 # System dependent
-alias ph="grep -i installed /var/log/pacman.log" # pacman history
 alias bc="bc -q" # Basic calculator
 alias cal="cal -w" # Calendar
 alias ranger="yazi" # Ranger replacement
@@ -99,10 +98,7 @@ alias l="eza -laF auto"
 alias ll="eza -laGF auto"
 
 # Other programs
-alias nightlight="redshift -x && redshift -O $1"
 alias cmatrix="cmatrix -abu6"
-alias waybar="killall waybar; waybar"
-alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
 
 ### Local file ###
 if [[ -r ~/.config/zsh/local.zsh ]]; then
