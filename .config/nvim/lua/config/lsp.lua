@@ -1,14 +1,18 @@
--- Add cmp_nvim_lsp capabilities settings to lspconfig
--- This should be executed before you configure any language server
-local lspconfig_defaults = require("lspconfig").util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-   "force",
-   lspconfig_defaults.capabilities,
-   require("cmp_nvim_lsp").default_capabilities()
-)
+-- Add cmp-nvim-lsp capabilities to all servers
+vim.lsp.config("*", {
+   capabilities = require("cmp_nvim_lsp").default_capabilities()
+})
 
--- This is where you enable features that only work
--- if there is a language server active in the file
+-- Server specific overrides
+vim.lsp.config("avalonia", {
+   cmd = { "avalonia-ls" },
+   filetypes = { "xml" },
+   root_markers = { ".csproj", ".git" }
+})
+
+-- Non Mason managed servers
+vim.lsp.enable("avalonia")
+
 vim.api.nvim_create_autocmd("LspAttach", {
    desc = "LSP actions",
    callback = function(event)

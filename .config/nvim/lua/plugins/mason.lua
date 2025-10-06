@@ -1,5 +1,6 @@
 return {
    {
+      -- Package manager for LSPs
       "williamboman/mason.nvim",
       cmd = "Mason",
       opts = {
@@ -11,17 +12,9 @@ return {
    },
 
    {
+      -- Automatically enables all installed LSPs
       "williamboman/mason-lspconfig.nvim",
       event = { "BufReadPre", "BufNewFile" },
-      dependencies = {
-         "williamboman/mason.nvim"
-      },
-      opts = {
-         handlers = {
-            function(server_name)
-               require("lspconfig")[server_name].setup({})
-            end
-         }
-      }
+      opts = { }
    }
 }

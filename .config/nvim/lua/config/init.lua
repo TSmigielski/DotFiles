@@ -1,4 +1,5 @@
 require("config.options")
 require("config.autocommands")
+require("config.filetypes")
 require("config.lsp")
 require("config.mappings")
