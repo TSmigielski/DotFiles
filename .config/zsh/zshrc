@@ -44,7 +44,7 @@ fi
 
 
 ### Env ###
-export PATH=$PATH:~/.local/bin:~/.cargo/bin:~/.symfony5/bin
+export PATH=$PATH:~/.local/bin:~/.dotnet/tools:~/.cargo/bin:~/.symfony5/bin
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER="nvim +Man!"
