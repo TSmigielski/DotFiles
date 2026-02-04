@@ -39,3 +39,6 @@
 
 [include]
 	path = /home/ts-pl/Projects/OpenSource/delta/themes.gitconfig
+[safe]
+	directory = /mnt/trimtab/Projects/*
+	directory = *

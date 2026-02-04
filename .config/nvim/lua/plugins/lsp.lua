@@ -54,12 +54,6 @@ return {
    },
 
    {
-      "seblyng/roslyn.nvim",
-      ft = "cs",
-      opts = { }
-   },
-
-   {
       "GodOfAvacyn/gdshader-lsp",
       ft = "gdshader",
       config = function (plugin, opts)

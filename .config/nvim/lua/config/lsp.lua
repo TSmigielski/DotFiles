@@ -12,6 +12,7 @@ vim.lsp.config("avalonia", {
 
 -- Non Mason managed servers
 vim.lsp.enable("avalonia")
+vim.lsp.enable("easy_dotnet")
 
 vim.api.nvim_create_autocmd("LspAttach", {
    desc = "LSP actions",
