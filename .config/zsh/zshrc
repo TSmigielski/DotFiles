@@ -56,9 +56,19 @@ export DOCKER_HOST=unix:///var/run/docker.sock
 
 ### Aliases ###
 # Git
-source ~/.zsh/omz.lib.git.zsh
-source ~/.zsh/omz.git.plugin.zsh
-alias gf="gfa" # gf="git fetch" +a="--all --prune"
+alias gs="git status"
+alias gl="git log --graph"
+alias gla="git log --graph --all"
+alias gls="git log --graph --stat"
+alias gf="git fetch --all --prune --tags --jobs=10"
+alias gc="git commit"
+alias gd="git diff"
+alias gcam="git commit -a -m"
+alias ggl="git pull"
+alias ggp="git push"
+alias gsi="git submodule init"
+alias gsu="git submodule update"
+
 alias config="git --git-dir=$HOME/.DotFiles/.git/ --work-tree=$HOME"
 alias cfga="config add"
 alias cfgs="config status"
@@ -67,6 +77,7 @@ alias cfgc="config commit"
 alias cfgf="config fetch --all --prune"
 alias cfgp="config push"
 alias cfgl="config pull"
+alias cfgd="config diff"
 
 # General
 alias sudo="sudo "
