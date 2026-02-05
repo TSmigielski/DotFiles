@@ -68,21 +68,6 @@ return {
             "filetype"
          }
       },
-      tabline = {
-         lualine_a = {
-            {
-               "buffers",
-               mode = 2,
-               symbols = {
-                  alternate_file = "^",
-               }
-            }
-         },
-         lualine_x = {
-            "searchcount",
-            "selectioncount"
-         }
-      },
       extensions = {
          "fugitive",
          "lazy",

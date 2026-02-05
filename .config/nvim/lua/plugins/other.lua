@@ -133,5 +133,13 @@ return {
    {
       "lambdalisue/vim-suda",
       cmd = { "SudaWrite", "SudaRead" }
+   },
+
+   {
+      "EL-MASTOR/bufferlist.nvim",
+      dependencies = "nvim-tree/nvim-web-devicons",
+      keys = { { "<Leader><Leader>", ':BufferList<CR>', desc = "Open bufferlist" } },
+      cmd = "BufferList",
+      opts = { }
    }
 }
