@@ -2,24 +2,22 @@ return {
    {
       "mfussenegger/nvim-dap",
       dependencies = {
-         "rcarriga/nvim-dap-ui",
-         "nvim-neotest/nvim-nio"
+         "igorlfs/nvim-dap-view"
       },
       config = function()
-         local dap, dapui = require("dap"), require("dapui")
-         dapui.setup()
+         local dap, dapview = require("dap"), require("dap-view")
 
          dap.listeners.before.attach.dapui_config = function()
-            dapui.open()
+            dapview.open()
          end
          dap.listeners.before.launch.dapui_config = function()
-            dapui.open()
+            dapview.open()
          end
          dap.listeners.before.event_terminated.dapui_config = function()
-            dapui.close()
+            dapview.close()
          end
          dap.listeners.before.event_exited.dapui_config = function()
-            dapui.close()
+            dapview.close()
          end
 
          vim.fn.sign_define("DapBreakpoint", { text="" })

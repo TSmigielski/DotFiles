@@ -89,8 +89,7 @@ return {
          "man",
          "mason",
          "oil",
-         "trouble",
-         "nvim-dap-ui"
+         "trouble"
       }
    }
 }
