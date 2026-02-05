@@ -128,5 +128,10 @@ return {
          vim.opt.termguicolors = true;
          require("ccc").setup(opts)
       end
+   },
+
+   {
+      "lambdalisue/vim-suda",
+      cmd = { "SudaWrite", "SudaRead" }
    }
 }
