@@ -38,6 +38,7 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 require("luasnip.loaders.from_vscode").lazy_load()
+cmp.register_source("easy-dotnet", require("easy-dotnet").package_completion_source)
 
 -- Base mappings
 local mappings = {
@@ -50,23 +51,14 @@ local mappings = {
    ["<C-q>"] = cmp.mapping(cmp.mapping.close_docs(), { "i", "c" }),
    ["<CS-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
    ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-
-   -- Confirm & insert dot
-   -- ["."] = cmp.mapping(function(fallback)
-   --    if cmp.visible() then
-   --       cmp.confirm({ select = true })
-   --       vim.fn.feedkeys(".", "n")
-   --    else
-   --       fallback()
-   --    end
-   -- end, { "i", "c" })
 }
 
 cmp.setup({
    sources = {
       { name = "nvim_lsp" },
       { name = "buffer" },
-      { name = "luasnip" }
+      { name = "luasnip" },
+      { name = "easy-dotnet" }
    },
    snippet = {
       expand = function(args)
@@ -113,7 +105,4 @@ cmp.setup.cmdline(":", {
 
 -- Insert '(' after confirming
 local autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on(
-   "confirm_done",
-   autopairs.on_confirm_done()
-)
+cmp.event:on("confirm_done", autopairs.on_confirm_done())
