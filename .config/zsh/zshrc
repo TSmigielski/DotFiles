@@ -58,6 +58,7 @@ export DOCKER_HOST=unix:///var/run/docker.sock
 ### Aliases ###
 # Git
 alias gs="git status"
+alias gsh="git show"
 alias gl="git log --graph"
 alias gla="git log --graph --all"
 alias gls="git log --graph --stat"
