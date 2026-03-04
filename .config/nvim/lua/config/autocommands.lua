@@ -1,9 +1,9 @@
 -- Open in last position
 vim.api.nvim_create_autocmd("BufReadPost", {
-   pattern = {"*"},
+   pattern = { "*" },
    callback = function()
       if (vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$")) then
-         vim.api.nvim_exec("normal! g'\"",false)
+         vim.api.nvim_exec("normal! g'\"", false)
       end
    end
 })
@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Auto-show/hide cursorline on window enter/exit
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
-vim.api.nvim_create_autocmd({"WinEnter", "BufEnter", "FocusGained" }, {
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FocusGained" }, {
    group = "CursorLine",
    callback = function()
       -- Check if the current window is a floating window
@@ -39,4 +39,12 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FocusLost" }, {
 -- Codelens
 vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
    callback = vim.lsp.codelens.refresh
+})
+
+-- Set ts=4 in cs and associated files
+vim.api.nvim_create_autocmd("FileType", {
+   pattern = { "cs", "csproj" },
+   callback = function()
+      vim.opt_local.tabstop = 4
+   end,
 })
