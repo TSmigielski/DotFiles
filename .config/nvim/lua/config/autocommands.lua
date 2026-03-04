@@ -48,3 +48,11 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.opt_local.tabstop = 4
    end,
 })
+
+-- Set ts=2 in cs and associated files
+vim.api.nvim_create_autocmd("FileType", {
+   pattern = { "dap-view" },
+   callback = function()
+      vim.opt_local.tabstop = 2
+   end,
+})
