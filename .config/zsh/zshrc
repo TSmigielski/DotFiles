@@ -123,6 +123,7 @@ alias nightlight="redshift -x && redshift -O $1"
 alias cmatrix="cmatrix -abu6"
 alias waybar="killall waybar; waybar"
 alias dunst-restart="killall dunst; notify-send 'dunst restarted'"
+alias wav2flac='for f in *.wav; do ffmpeg -i "$f" -c:a flac "${f%.wav}.flac"; done'
 
 ### Local file ###
 if [[ -r ~/.config/zsh/local.zsh ]]; then
