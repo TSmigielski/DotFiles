@@ -59,9 +59,9 @@ export DOCKER_HOST=unix:///var/run/docker.sock
 # Git
 alias gs="git status"
 alias gsh="git show"
-alias gl="git log --graph --shortstat --abbrev-commit"
-alias gla="git log --graph --all --shortstat --abbrev-commit"
-alias gls="git log --graph --stat --abbrev-commit"
+alias gl="git log --graph --shortstat --pretty='%C(yellow)commit %C(auto)%h%d%nAuthor: %Cblue%an %Creset<%ae>%nDate:   %Cgreen%ad (%ar)%n%n%B%-'"
+alias gla="git log --graph --all --shortstat --pretty='%C(yellow)commit %C(auto)%h%d%nAuthor: %Cblue%an %Creset<%ae>%nDate:   %Cgreen%ad (%ar)%n%n%B%-'"
+alias gls="git log --graph --stat --pretty='%C(yellow)commit %C(auto)%h%d%nAuthor: %Cblue%an %Creset<%ae>%nDate:   %Cgreen%ad (%ar)%n%n%B%-'"
 alias gd="git diff"
 alias gc="git commit"
 alias gcam="git commit -a -m"
