@@ -22,7 +22,9 @@ vim.keymap.set("n", "<leader>ff", function()
    -- Check if in git repository
    vim.fn.system("git rev-parse --git-dir 2> /dev/null")
    if (vim.v.shell_error == 0) then
-      telescope.git_files()
+      telescope.git_files({
+         recurse_submodules = true
+      })
    else
       telescope.find_files()
    end
