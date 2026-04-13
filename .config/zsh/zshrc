@@ -111,6 +111,8 @@ alias ph="grep -i installed /var/log/pacman.log" # pacman history
 alias bc="bc -q" # Basic calculator
 alias cal="cal -w" # Calendar
 alias ranger="yazi" # Ranger replacement
+alias sys="sudo systemctl"
+alias sysu="systemctl --user"
 
 # Eza
 alias eza="eza --git"
