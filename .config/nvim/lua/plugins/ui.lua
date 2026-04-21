@@ -3,13 +3,13 @@ return {
       "Mofiqul/vscode.nvim",
       priority = 1000,
       lazy = false,
-      opts = {
-         transparent = true,
-         italic_comments = true
-      },
-      config = function(_, opts)
-         require("vscode").setup(opts)
-         require("vscode").load()
+      config = function()
+         require("vscode").setup({
+            transparent = true,
+            italic_comments = true
+         })
+
+         vim.cmd.colorscheme("vscode")
       end
    },
 
