@@ -36,11 +36,6 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FocusLost" }, {
    end
 })
 
--- Codelens
-vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
-   callback = vim.lsp.codelens.refresh
-})
-
 -- Set ts=4 in cs and associated files
 vim.api.nvim_create_autocmd("FileType", {
    pattern = { "cs", "csproj" },

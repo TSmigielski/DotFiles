@@ -64,6 +64,7 @@ return {
    },
 
    {
+      enabled = false,
       "windwp/nvim-ts-autotag",
       event = "InsertEnter",
       dependencies = {
