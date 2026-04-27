@@ -34,9 +34,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
    end,
 })
 
--- Link extension method highlight to regular method.
--- C# Extension methods dont have color without this.
-vim.api.nvim_set_hl(0, "@lsp.type.extensionMethod", { link = "@function.method" })
+-- Link non existent highlight groups for c# tokens.
+vim.api.nvim_set_hl(0, "@lsp.type.extensionMethod.cs", { link = "@function.method" })
+vim.api.nvim_set_hl(0, "@lsp.type.recordClass.cs", { link = "@type" })
 
 -- CMP --
 local cmp = require("cmp")
