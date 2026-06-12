@@ -64,16 +64,14 @@ alias gl="git log --graph --shortstat --pretty='%C(yellow)commit %C(auto)%h%d%nA
 alias gla="git log --graph --all --shortstat --pretty='%C(yellow)commit %C(auto)%h%d%nAuthor: %Cblue%an %Creset<%ae>%nDate:   %Cgreen%ad (%ar)%n%n%B%-'"
 alias gls="git log --graph --stat --pretty='%C(yellow)commit %C(auto)%h%d%nAuthor: %Cblue%an %Creset<%ae>%nDate:   %Cgreen%ad (%ar)%n%n%B%-'"
 alias gd="git diff"
-alias gc="git commit"
-alias gcam="git commit -a -m"
+alias gds="git diff --staged"
+alias gb="git branch"
+alias gba="git branch -a"
 
 alias gco="git checkout"
 alias gsw="git switch"
 alias gswm="git switch main"
 alias gswc="git switch -c"
-
-alias ga="git add"
-alias gaa="git add --all"
 
 alias gf="git fetch --all --prune --tags --jobs=10"
 alias ggl="git pull"
@@ -81,6 +79,16 @@ alias ggp="git push"
 
 alias gsi="git submodule init"
 alias gsu="git submodule update"
+
+alias ga="git add"
+alias gaa="git add --all"
+
+alias gc="git commit"
+alias gcam="git commit -a -m"
+
+alias gm="git merge"
+alias gms="git merge --squash"
+alias gr="git rebase"
 
 alias config="git --git-dir=$HOME/.DotFiles/.git/ --work-tree=$HOME"
 alias cfga="config add"
