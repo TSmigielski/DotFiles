@@ -5,9 +5,9 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.listchars = "tab:> ,trail:-,nbsp:+,extends:~,precedes:~"
 
-vim.opt.tabstop = 8
-vim.opt.softtabstop = 3
-vim.opt.shiftwidth = 3
+vim.opt.tabstop = 3
+vim.opt.softtabstop = -1
+vim.opt.shiftwidth = 0
 vim.opt.expandtab = true
 
 vim.opt.ignorecase = true

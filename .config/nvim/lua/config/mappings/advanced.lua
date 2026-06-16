@@ -16,9 +16,9 @@ vim.keymap.set("n", "<leader>T", function()
       value = 3
    end
 
-   vim.opt.tabstop = 8
-   vim.opt.softtabstop = value
-   vim.opt.shiftwidth = value
+   vim.opt.tabstop = value
+   vim.opt.softtabstop = -1
+   vim.opt.shiftwidth = 0
    vim.opt.expandtab = true
    print("Tab width set to: " .. value)
 end, Desc("Set tab width"))

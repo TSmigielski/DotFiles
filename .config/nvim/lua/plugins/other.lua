@@ -22,11 +22,6 @@ return {
    },
 
    {
-      "tpope/vim-sleuth",
-      event = "BufReadPre"
-   },
-
-   {
       "prettier/vim-prettier",
       event = "VeryLazy"
    },

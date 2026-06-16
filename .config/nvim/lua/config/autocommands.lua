@@ -36,22 +36,6 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FocusLost" }, {
    end
 })
 
--- Set ts=4 in cs and associated files
-vim.api.nvim_create_autocmd("FileType", {
-   pattern = { "cs", "csproj" },
-   callback = function()
-      vim.opt_local.tabstop = 4
-   end,
-})
-
--- Set ts=2 in cs and associated files
-vim.api.nvim_create_autocmd("FileType", {
-   pattern = { "dap-view" },
-   callback = function()
-      vim.opt_local.tabstop = 2
-   end,
-})
-
 -- Change filetype from json5 to jsonc
 vim.api.nvim_create_autocmd("FileType", {
    pattern = "json5",
