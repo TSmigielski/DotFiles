@@ -1,8 +1,10 @@
 local normalUnmaps = {
-   "grr",
-   "gri",
    "gra",
-   "grn"
+   "gri",
+   "grn",
+   "grr",
+   "grt",
+   "grx"
 }
 
 for i, unmap in ipairs(normalUnmaps) do
