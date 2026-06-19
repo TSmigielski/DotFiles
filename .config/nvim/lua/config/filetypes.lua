@@ -1,5 +1,6 @@
 vim.filetype.add({
    extension = {
-      axaml = "xml"
+      axaml = "xml",
+      log = "log"
    }
 })
