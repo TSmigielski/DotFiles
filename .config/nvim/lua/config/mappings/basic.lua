@@ -34,4 +34,6 @@ vim.keymap.set("n", "Q", "<nop>") -- Disable Q
 vim.keymap.set("n", "J", "mzJ`z") -- Keep cursor in place during J
 vim.keymap.set("n", "ghs", ":help <C-r><C-w><CR>", Desc("Goto help files (bottom)"))
 vim.keymap.set("n", "ghh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (right)"))
-vim.keymap.set("n", "<leader>q", ":copen<CR>") -- Disable Q
+vim.keymap.set("n", "<leader>q", ":copen<CR>", Desc("Open quickfix list"))
+vim.keymap.set("n", "<leader>Q", ":cclose<CR>", Desc("Close quickfix list"))
+vim.keymap.set("n", "<leader>h", ":set hlsearch!<CR>", Desc("Toggle search highlight"))
