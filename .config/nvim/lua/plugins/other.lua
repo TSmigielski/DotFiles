@@ -1,5 +1,3 @@
-local quickScopeKeys = { "f", "F", "t", "T" }
-
 return {
    {
       "stevearc/vim-arduino",
@@ -24,12 +22,6 @@ return {
    {
       "prettier/vim-prettier",
       event = "VeryLazy"
-   },
-
-   {
-      "kylechui/nvim-surround",
-      event = "VeryLazy",
-      opts = { }
    },
 
    {
@@ -69,21 +61,6 @@ return {
    },
 
    {
-      "windwp/nvim-autopairs",
-      event = "InsertEnter",
-      config = true,
-      opts = { }
-   },
-
-   {
-      "unblevable/quick-scope",
-      keys = quickScopeKeys,
-      init = function()
-         vim.g.qs_highlight_on_keys = quickScopeKeys
-      end
-   },
-
-   {
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
       build = "cd app && yarn install",
@@ -91,24 +68,6 @@ return {
          vim.g.mkdp_filetypes = { "markdown" }
       end,
       ft = { "markdown" },
-   },
-
-   {
-      "tzachar/local-highlight.nvim",
-      event = "BufRead",
-      opts = {
-         animate = {
-            duration = {
-               step = 10,
-               total = 50
-            }
-         },
-         debounce_timeout = 80
-      },
-      config = function (plugin, opts)
-         require("local-highlight").setup(opts)
-         vim.cmd("highlight LocalHighlight guifg=nil")
-      end
    },
 
    {

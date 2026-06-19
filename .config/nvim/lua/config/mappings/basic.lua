@@ -29,8 +29,9 @@ vim.keymap.set({"n","v"}, "<leader>d", [["_d]], Desc("Delete to discard register
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- QOL
-vim.keymap.set("i", "<C-c>", "<esc>") -- Ctrl + C == Esc
+vim.keymap.set("v", "<C-c>", "<esc>")
 vim.keymap.set("n", "Q", "<nop>") -- Disable Q
 vim.keymap.set("n", "J", "mzJ`z") -- Keep cursor in place during J
 vim.keymap.set("n", "ghs", ":help <C-r><C-w><CR>", Desc("Goto help files (bottom)"))
 vim.keymap.set("n", "ghh", ":vert help <C-r><C-w><CR>", Desc("Goto help files (right)"))
+vim.keymap.set("n", "<leader>q", ":copen<CR>") -- Disable Q
