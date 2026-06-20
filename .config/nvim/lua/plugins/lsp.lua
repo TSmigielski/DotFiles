@@ -67,5 +67,17 @@ return {
             }
          end
       end
+   },
+
+   {
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      event = "LspAttach",
+      config = function (plugin, opts)
+         vim.diagnostic.config({
+            virtual_text = false,
+            virtual_lines = true
+         })
+         require("lsp_lines").setup()
+      end
    }
 }
