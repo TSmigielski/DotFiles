@@ -3,11 +3,12 @@ return {
    ft = {
       "cs",
       "sln",
+      "slnx",
       "csproj"
    },
-   dependencies = {
-      "nvim-lua/plenary.nvim",
-      'nvim-telescope/telescope.nvim',
-   },
-   opts = {}
+   opts = {
+      notifications = {
+         handler = false -- Handled by lualine integration
+      }
+   }
 }

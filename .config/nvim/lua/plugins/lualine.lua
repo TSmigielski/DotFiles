@@ -1,3 +1,5 @@
+local dotnet = require("easy-dotnet")
+
 local white = {
    fg = "#f4f4ee"
 }
@@ -44,6 +46,14 @@ return {
             -- }
          },
          lualine_y = {
+            {
+               dotnet.lualine.jobs,
+               color = white
+            },
+            {
+               dotnet.lualine.run_status,
+               color = dotnet.lualine.run_status_color
+            },
             {
                "lsp_status",
                color = white
