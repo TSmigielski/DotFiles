@@ -35,6 +35,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
    end,
 })
 
+-- Better CodeLens hl.
+vim.api.nvim_set_hl(0, "LspCodeLens", { fg = "#717171", italic = true })
+
 -- Link non existent highlight groups for c# tokens.
 vim.api.nvim_set_hl(0, "@lsp.type.extensionMethod.cs", { link = "@function.method" })
 vim.api.nvim_set_hl(0, "@lsp.type.recordClass.cs", { link = "@type" })
@@ -50,13 +53,12 @@ cmp.register_source("easy-dotnet", require("easy-dotnet").package_completion_sou
 local mappings = {
    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = "select" }), { "i", "c" }),
    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = "select" }), { "i", "c" }),
-   ["<C-l>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
    ["<Tab>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
    ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
    ["<C-q>"] = cmp.mapping(cmp.mapping.close_docs(), { "i", "c" }),
    ["<CS-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-   ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+   ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
 }
 
 cmp.setup({
@@ -75,15 +77,6 @@ cmp.setup({
    preselect = "item",
    completion = {
       completeopt = "menu,menuone,noinsert"
-   },
-   formatting = {
-      expandable_indicator = true,
-      fields = { "abbr", "kind", "menu" },
-      format = lspkind.cmp_format({
-         mode = "symbol",
-         ellipsis_char = "...",
-         show_labelDetails = true
-      })
    }
 })
 
@@ -111,4 +104,68 @@ cmp.setup.cmdline(":", {
 
 -- Insert '(' after confirming
 local autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", autopairs.on_confirm_done())
+-- cmp.event:on("confirm_done", autopairs.on_confirm_done())
+
+
+-- Handles Roslyn's "completionComplexEdit" completions, which nvim-cmp
+-- doesn't natively support. Roslyn sends an empty textEdit and instead
+-- stashes the real edit inside `item.command.arguments`. This hooks into
+-- cmp's confirm_done event, detects that shape, and applies the edit
+-- directly to the buffer.
+--
+-- Also wires up nvim-autopairs' own confirm_done handler, but only for
+-- completions that AREN'T a Roslyn complex edit -- autopairs doesn't know
+-- about this custom command and would just be acting on stale/incomplete
+-- text if it ran on those too.
+
+local autopairs_on_confirm_done = autopairs.on_confirm_done()
+cmp.event:on("confirm_done", function(event)
+  local entry = event.entry
+  local item = entry:get_completion_item()
+
+  local command = item.command
+  if not command or command.command ~= "roslyn.client.completionComplexEdit" then
+    -- Not a Roslyn complex edit -- let autopairs handle it as normal.
+    autopairs_on_confirm_done(event)
+    return
+  end
+
+  -- The edit payload lives somewhere in command.arguments. Find the
+  -- argument that actually looks like a TextEdit (has range + newText),
+  -- rather than hardcoding an index, since the position may not be stable
+  -- across Roslyn versions.
+  local edit
+  for _, arg in ipairs(command.arguments or {}) do
+    if type(arg) == "table" and arg.range and arg.newText ~= nil then
+      edit = arg
+      break
+    end
+  end
+
+  if not edit then
+    vim.notify(
+      "[roslyn complex edit] command fired but no TextEdit-shaped argument found",
+      vim.log.levels.WARN
+    )
+    return
+  end
+
+  local bufnr = entry.context and entry.context.bufnr or vim.api.nvim_get_current_buf()
+
+  -- Apply the real edit. This is a standard LSP TextEdit, so we can use
+  -- nvim's built-in applier directly.
+  vim.lsp.util.apply_text_edits({ edit }, bufnr, "utf-16")
+
+  -- Move the cursor to the end of the inserted text, since apply_text_edits
+  -- doesn't do this for us and cmp's own (empty) insert already left the
+  -- cursor in roughly the right spot, but let's be precise about it.
+  local lines = vim.split(edit.newText, "\n", { plain = true })
+  local end_line = edit.range.start.line + (#lines - 1)
+  local end_col
+  if #lines == 1 then
+    end_col = edit.range.start.character + #lines[1]
+  else
+    end_col = #lines[#lines]
+  end
+  vim.api.nvim_win_set_cursor(0, { end_line + 1, end_col })
+end)

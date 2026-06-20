@@ -22,7 +22,8 @@ return {
       event = "InsertEnter",
       dependencies = {
          "rafamadriz/friendly-snippets"
-      }
+      },
+      build = "make install_jsregexp"
    },
 
    {
