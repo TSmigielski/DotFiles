@@ -13,46 +13,12 @@ vim.keymap.set("n", "<leader>nl", ":NoiceLast<CR>", Desc("Last notification"))
 vim.keymap.set("n", "<leader>nd", ":NoiceDismiss<CR>", Desc("Dismiss notifications"))
 vim.keymap.set("n", "<leader>ne", ":NoiceErrors<CR>", Desc("Show last errors"))
 
---- Telescope --- 
-local telescope = require("telescope.builtin")
-vim.keymap.set("n", "<leader>bb", telescope.buffers, Desc("Find open buffer (Telescope)"))
-vim.keymap.set("n", "<leader>fg", telescope.live_grep, Desc("Live grep (Telescope)"))
-vim.keymap.set("n", "<space>fr", telescope.resume, Desc("Telescope resume"))
-vim.keymap.set("n", "<leader>ff", function()
-   -- Check if in git repository
-   vim.fn.system("git rev-parse --git-dir 2> /dev/null")
-   if (vim.v.shell_error == 0) then
-      telescope.git_files({
-         recurse_submodules = true
-      })
-   else
-      telescope.find_files()
-   end
-end, Desc("Find file (Telescope)"))
-
-local prevFileTypes = "";
-vim.keymap.set("n", "<space>ft", function()
-   local inputText
-   local fileTypes
-
-   if (prevFileTypes == "") then
-      inputText = "Enter file types (seperated with ,): "
-   else
-      inputText = "Enter file types (previous `" .. prevFileTypes .. "`): "
-   end
-
-   local input = vim.fn.input(inputText)
-   if (input ~= "") then
-      fileTypes = input
-   elseif (prevFileTypes == "") then
-      fileTypes = "*"
-   else
-      fileTypes = prevFileTypes
-   end
-
-   telescope.live_grep({glob_pattern = "*.{" .. fileTypes .. "}"})
-   prevFileTypes = fileTypes
-end, Desc("Live grep [ft] (Telescope)"))
+--- FZF --- 
+local fzf = require("fzf-lua")
+vim.keymap.set("n", "<leader>f", fzf.global, Desc("FZF combo"))
+vim.keymap.set("n", "<leader>g", fzf.live_grep_native, Desc("FZF live grep"))
+vim.keymap.set("n", "<leader>r", fzf.resume, Desc("FZF resume"))
+vim.keymap.set("n", "<leader>a", ":FzfLua<Cr>", Desc("FZF search mode"))
 
 --- Trouble --- 
 local trouble = require("trouble")
@@ -106,6 +72,4 @@ vim.api.nvim_create_autocmd("FileType", {
 
 --- Other ---
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<leader>fp", ":Prettier<CR>", Desc("Format with Prettier"))
-vim.keymap.set("n", "<leader>fc", ":ClangFormat<CR>", Desc("Format with clang-format"))
 vim.keymap.set("n", "<leader>c", ":CccPick<CR>", Desc("Color picker"))

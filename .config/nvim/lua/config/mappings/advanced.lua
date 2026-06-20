@@ -6,7 +6,7 @@ vim.keymap.set({"n","v"}, "<Space>", "<Nop>", { silent = true }) -- Disable spac
 
 vim.keymap.set("v", "/", '"vy/<C-r>v<CR>', Desc("Search selected text"))
 
-vim.keymap.set("n", "<leader>gx", '"pyi":!xdg-open https://github.com/<C-r>p<CR>', Desc("Open in github"))
+vim.keymap.set("n", "<leader>lg", '"pyi":!xdg-open https://github.com/<C-r>p<CR>', Desc("Open in github"))
 
 vim.keymap.set("n", "<leader>T", function()
    local input = vim.fn.input("Enter tab width (or hit enter for 3): ")
