@@ -5,3 +5,5 @@ mouse-hide-while-typing = true
 window-padding-balance = true
 window-new-tab-position = end
 focus-follows-mouse = true
+
+keybind = ctrl+enter=unbind

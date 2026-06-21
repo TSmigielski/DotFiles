@@ -6,14 +6,14 @@ return {
    {
       "kylechui/nvim-surround",
       event = "VeryLazy",
-      opts = { }
+      opts = {}
    },
 
    {
       "windwp/nvim-autopairs",
       event = "InsertEnter",
       config = true,
-      opts = { }
+      opts = {}
    },
 
    {
@@ -36,7 +36,7 @@ return {
          },
          debounce_timeout = 80
       },
-      config = function (_, opts)
+      config = function(_, opts)
          require("local-highlight").setup(opts)
          vim.cmd("highlight LocalHighlight guifg=nil")
       end
@@ -52,5 +52,25 @@ return {
             winblend = 0
          }
       }
+   },
+
+   {
+      "mluders/comfy-line-numbers.nvim",
+      event = "BufReadPre",
+      config = true
+   },
+
+   {
+      "ysmb-wtsg/in-and-out.nvim",
+      config = true,
+      keys = {
+         {
+            "<C-CR>",
+            function()
+               require("in-and-out").in_and_out()
+            end,
+            mode = {"n", "i", "v"}
+         }
+      },
    }
 }
