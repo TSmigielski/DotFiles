@@ -27,22 +27,6 @@ return {
    },
 
    {
-      "folke/trouble.nvim",
-      event = "VeryLazy",
-      opts = {
-         modes = {
-            diagnostics = {
-               auto_close = true,
-               warn_no_results = false
-            },
-            lsp = {
-               open_no_results = true
-            }
-         }
-      }
-   },
-
-   {
       "folke/lazydev.nvim",
       ft = "lua",
       opts = {
@@ -57,7 +41,7 @@ return {
    {
       "GodOfAvacyn/gdshader-lsp",
       ft = "gdshader",
-      config = function (plugin, opts)
+      config = function(_, _)
          function gdshader()
             vim.lsp.start {
                name = "gdshader-lsp",
@@ -73,7 +57,7 @@ return {
    {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       event = "LspAttach",
-      config = function (plugin, opts)
+      config = function(_, _)
          vim.diagnostic.config({
             virtual_text = false,
             virtual_lines = true

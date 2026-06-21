@@ -23,7 +23,7 @@ return {
 
    {
       "lewis6991/gitsigns.nvim",
-      event = "VeryLazy",
+      event = "BufReadPre",
       opts = {
          sign_priority = 100
       }

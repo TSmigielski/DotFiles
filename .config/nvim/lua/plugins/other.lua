@@ -16,12 +16,13 @@ return {
 
    {
       "tpope/vim-fugitive",
-      event = "VeryLazy"
+      cmd = { "G", "Git", "Gedit", "Gsplit", "Gdiffsplit", "Gvdiffsplit", "Gread", "Gwrite", "Ggrep", "Glgrep", "GMove", "GDelete", "GBrowse" }
    },
 
    {
       "prettier/vim-prettier",
-      event = "VeryLazy"
+      keys = "<Leader>p",
+      cmd = { "Prettier", "PrettierAsync", "PrettierPartial", "PrettierFragment", "PrettierVersion", "PrettierCli", "PrettierCliPath", "PrettierCliVersion" }
    },
 
    {
@@ -57,29 +58,29 @@ return {
       dependencies = {
          "nvim-treesitter/nvim-treesitter"
       },
-      opts = { },
+      config = true
    },
 
    {
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      ft = { "markdown" },
       build = "cd app && yarn install",
       init = function()
          vim.g.mkdp_filetypes = { "markdown" }
-      end,
-      ft = { "markdown" },
+      end
    },
 
    {
       "uga-rosa/ccc.nvim",
-      lazy = false,
+      event = "BufReadPre",
       opts = {
          highlighter = {
             auto_enable = true,
             lsp = true
          }
       },
-      config = function (plugin, opts)
+      config = function(plugin, opts)
          vim.opt.termguicolors = true;
          require("ccc").setup(opts)
       end
@@ -95,6 +96,6 @@ return {
       dependencies = "nvim-tree/nvim-web-devicons",
       keys = { { "<Leader><Leader>", ':BufferList<CR>', desc = "Open bufferlist" } },
       cmd = "BufferList",
-      opts = { }
+      config = true
    }
 }

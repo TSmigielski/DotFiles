@@ -5,15 +5,13 @@ local quickScopeKeys = { "f", "F", "t", "T" }
 return {
    {
       "kylechui/nvim-surround",
-      event = "VeryLazy",
-      opts = {}
+      keys = {"ys", "ds", "cs"}
    },
 
    {
       "windwp/nvim-autopairs",
       event = "InsertEnter",
-      config = true,
-      opts = {}
+      config = true
    },
 
    {
@@ -62,7 +60,6 @@ return {
 
    {
       "ysmb-wtsg/in-and-out.nvim",
-      config = true,
       keys = {
          {
             "<C-CR>",

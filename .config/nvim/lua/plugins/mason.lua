@@ -15,6 +15,6 @@ return {
       -- Automatically enables all installed LSPs
       "williamboman/mason-lspconfig.nvim",
       event = { "BufReadPre", "BufNewFile" },
-      opts = { }
+      config = true
    }
 }

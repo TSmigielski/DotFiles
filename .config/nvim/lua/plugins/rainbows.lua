@@ -1,4 +1,4 @@
-local highlight = { 
+local highlight = {
    "RainbowDelimiterRed",
    "RainbowDelimiterYellow",
    "RainbowDelimiterBlue",
@@ -61,7 +61,7 @@ return {
             }
          }
       },
-      config = function(plugin, opts)
+      config = function(_, opts)
          require("ibl").setup(opts)
          local hooks = require("ibl.hooks")
          hooks.register(

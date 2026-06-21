@@ -13,45 +13,6 @@ vim.keymap.set("n", "<leader>nl", ":NoiceLast<CR>", Desc("Last notification"))
 vim.keymap.set("n", "<leader>nd", ":NoiceDismiss<CR>", Desc("Dismiss notifications"))
 vim.keymap.set("n", "<leader>ne", ":NoiceErrors<CR>", Desc("Show last errors"))
 
---- FZF --- 
-local fzf = require("fzf-lua")
-vim.keymap.set("n", "<leader>f", fzf.global, Desc("FZF combo"))
-vim.keymap.set("n", "<leader>g", fzf.live_grep_native, Desc("FZF live grep"))
-vim.keymap.set("n", "<leader>r", fzf.resume, Desc("FZF resume"))
-vim.keymap.set("n", "<leader>a", ":FzfLua<Cr>", Desc("FZF search mode"))
-
---- Trouble --- 
-local trouble = require("trouble")
-vim.keymap.set("n", "<leader>tt", ":Trouble diagnostics toggle<CR>", Desc("Toggle diagnostics"))
-vim.keymap.set("n", "<leader>ts", function ()
-   if (trouble.is_open("lsp")) then
-      trouble.close("lsp")
-      trouble.open("symbols")
-      return
-   end
-   trouble.toggle("symbols")
-end, Desc("Toggle symbols"))
-
-vim.keymap.set("n", "<leader>tl", function ()
-   local lsp = {
-      mode = "lsp",
-      win = {
-         position = "right"
-      }
-   }
-   if (trouble.is_open("symbols")) then
-      trouble.close("symbols")
-      trouble.open(lsp)
-      return
-   end
-   trouble.toggle(lsp)
-end, Desc("Toggle definitions"))
-
-vim.keymap.set("n", "<leader>tc", function ()
-   trouble.close("lsp")
-   trouble.close("symbols")
-end, Desc("Close windows"))
-
 --- VimArduino ---
 local inoGroup = vim.api.nvim_create_augroup("ino_autocommands", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {

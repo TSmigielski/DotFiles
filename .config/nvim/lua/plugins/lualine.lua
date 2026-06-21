@@ -1,8 +1,50 @@
-local dotnet = require("easy-dotnet")
-
 local white = {
    fg = "#f4f4ee"
 }
+
+local function getLineY(dotnet)
+   local line = {
+      {
+         "lsp_status",
+         color = white
+      },
+      {
+         "encoding",
+         color = white
+      },
+      {
+         "fileformat",
+         color = white
+      },
+      {
+         "filetype",
+         color = white
+      },
+      "progress"
+   }
+
+   if dotnet ~= nil then
+      table.insert(line, 1, {
+         dotnet.lualine.run_status,
+         color = dotnet.lualine.run_status_color
+      })
+
+      table.insert(line, 1, {
+         dotnet.lualine.jobs,
+         color = white
+      })
+   end
+
+   return line
+end
+
+function ReconfigureLuaLine(dotnet)
+   require("lualine").setup({
+      sections = {
+         lualine_y = getLineY(dotnet)
+      }
+   })
+end
 
 return {
    "nvim-lualine/lualine.nvim",
@@ -45,33 +87,7 @@ return {
             --    color = { fg = "#ff9e64" }
             -- }
          },
-         lualine_y = {
-            {
-               dotnet.lualine.jobs,
-               color = white
-            },
-            {
-               dotnet.lualine.run_status,
-               color = dotnet.lualine.run_status_color
-            },
-            {
-               "lsp_status",
-               color = white
-            },
-            {
-               "encoding",
-               color = white
-            },
-            {
-               "fileformat",
-               color = white
-            },
-            {
-               "filetype",
-               color = white
-            },
-            "progress"
-         }
+         lualine_y = getLineY(nil)
       },
       inactive_sections = {
          lualine_x = {

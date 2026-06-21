@@ -12,7 +12,6 @@ vim.lsp.config("avalonia", {
 
 -- Non Mason managed servers
 vim.lsp.enable("avalonia")
-vim.lsp.enable("easy_dotnet")
 
 vim.api.nvim_create_autocmd("LspAttach", {
    desc = "LSP actions",
@@ -47,7 +46,6 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 require("luasnip.loaders.from_vscode").lazy_load()
-cmp.register_source("easy-dotnet", require("easy-dotnet").package_completion_source)
 
 -- Base mappings
 local mappings = {
