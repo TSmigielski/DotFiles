@@ -24,7 +24,7 @@ return {
 
    {
       "tzachar/local-highlight.nvim",
-      event = "BufRead",
+      event = { "BufRead", "BufNewFile" },
       opts = {
          animate = {
             duration = {
@@ -54,7 +54,7 @@ return {
 
    {
       "mluders/comfy-line-numbers.nvim",
-      event = "BufReadPre",
+      event = { "BufReadPre", "BufNewFile" },
       config = true
    },
 

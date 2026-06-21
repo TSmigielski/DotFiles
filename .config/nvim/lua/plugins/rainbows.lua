@@ -11,7 +11,7 @@ local highlight = {
 return {
    {
       "HiPhish/rainbow-delimiters.nvim",
-      event = "BufReadPre",
+      event = { "BufReadPre", "BufNewFile" },
       init = function()
          vim.g.rainbow_delimiters = {
             strategy = {
@@ -28,7 +28,7 @@ return {
    {
       "lukas-reineke/indent-blankline.nvim",
       main = "ibl",
-      event = "BufReadPre",
+      event = { "BufReadPre", "BufNewFile" },
       opts = {
          scope = {
             highlight = highlight,
