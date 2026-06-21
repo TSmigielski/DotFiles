@@ -25,7 +25,15 @@ return {
          vim.fn.sign_define("DapBreakpointRejected", { text = "" })
          vim.fn.sign_define("DapLogPoint", { text = "" })
          vim.fn.sign_define("DapStopped", { text = "" })
-      end
+      end,
+      keys = {
+         { "<F4>",    ":DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
+         { "<F5>",    ":DapContinue<CR>",         desc = "Continue debugging" },
+         { "<S-F5>",  ":DapTerminate<CR>",        desc = "Terminate debugging" },
+         { "<F10>",   ":DapStepOver<CR>",         desc = "Step over" },
+         { "<F11>",   ":DapStepInto<CR>",         desc = "Step into" },
+         { "<S-F11>", ":DapStepOut<CR>",          desc = "Step out" }
+      }
    },
 
    {

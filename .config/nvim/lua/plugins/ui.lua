@@ -31,25 +31,18 @@ return {
 
    {
       "folke/snacks.nvim",
-      priority = 1000,
+      priority = 800,
       lazy = false,
       opts = {
-         dashboard = {
-            enabled = true,
-            preset = {
-               keys = {
-                  { icon = " ", key = "f", desc = "Find File", action = ":FzfLua files" },
-                  { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                  { icon = " ", key = "g", desc = "Find Text", action = ":FzfLua live_grep" },
-                  { icon = " ", key = "r", desc = "Recent Files", action = ":FzfLua oldfiles" },
-                  { icon = " ", key = "c", desc = "Config", action = ":FzfLua files cwd=~/.config/nvim" },
-                  { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-                  { icon = " ", key = "q", desc = "Quit", action = ":qa" }
-               }
-            }
+         bigfile = {
+            enabled = true
          },
-         input = { enabled = true },
-         picker = { enabled = true },
+         dashboard = {
+            enabled = true
+         },
+         input = {
+            enabled = true
+         },
          styles = {
             input = {
                backdrop = true
@@ -59,33 +52,15 @@ return {
    },
 
    {
-      "rcarriga/nvim-notify",
-      event = "VeryLazy",
+      "j-hui/fidget.nvim",
+      lazy = false,
+      priority = 500,
       opts = {
-         render = "wrapped-compact",
-         background_colour = "#000000",
-         fps = 60
-      }
-   },
-
-   {
-      "folke/noice.nvim",
-      enabled = false,
-      event = "VeryLazy",
-      dependencies = {
-         "MunifTanjim/nui.nvim",
-         "rcarriga/nvim-notify"
-      },
-      opts = {
-         cmdline = {
-            format = {
-               help = {
-                  pattern = {
-                     "^:%s*he?l?p?%s+",
-                     "^:%s*vert%s*he?l?p?%s+"
-                  }
-               }
-            }
+         display = {
+            done_ttl = 5
+         },
+         notification = {
+            override_vim_notify = true
          }
       }
    }

@@ -1,10 +1,5 @@
 return {
    {
-      "stevearc/vim-arduino",
-      ft = "arduino"
-   },
-
-   {
       "rhysd/vim-clang-format",
       ft = {
          "arduino",
@@ -48,6 +43,9 @@ return {
                return false
             end
          }
+      },
+      keys = {
+         { "-", ":Oil<Cr>", desc = "Open parent directory" }
       }
    },
 
@@ -73,7 +71,10 @@ return {
       config = function(plugin, opts)
          vim.opt.termguicolors = true;
          require("ccc").setup(opts)
-      end
+      end,
+      keys = {
+         { "<Leader>c", ":CccPick<Cr>", desc = "Color picker" }
+      }
    },
 
    {
