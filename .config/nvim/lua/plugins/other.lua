@@ -52,16 +52,6 @@ return {
    },
 
    {
-      enabled = false,
-      "windwp/nvim-ts-autotag",
-      event = "InsertEnter",
-      dependencies = {
-         "nvim-treesitter/nvim-treesitter"
-      },
-      config = true
-   },
-
-   {
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
       ft = { "markdown" },
