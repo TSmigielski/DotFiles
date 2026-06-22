@@ -35,11 +35,3 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FocusLost" }, {
       vim.wo.cursorline = false
    end
 })
-
--- Change filetype from json5 to jsonc
-vim.api.nvim_create_autocmd("FileType", {
-   pattern = "json5",
-   callback = function()
-      vim.bo.filetype = "jsonc"
-   end,
-})
