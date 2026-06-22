@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, getOpts("Quick documentation"))
       vim.keymap.set("n", "<AS-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
-      vim.keymap.set({"n", "i"}, "<A-s>", vim.lsp.buf.signature_help, getOpts("Signature help"))
+      vim.keymap.set({ "n", "i" }, "<A-s>", vim.lsp.buf.signature_help, getOpts("Signature help"))
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, getOpts("Goto definition"))
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, getOpts("Goto declaration"))
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, getOpts("Goto implementation"))
@@ -43,8 +43,6 @@ vim.api.nvim_set_hl(0, "@lsp.type.recordClass.cs", { link = "@type" })
 
 -- CMP --
 local cmp = require("cmp")
-local lspkind = require("lspkind")
-
 require("luasnip.loaders.from_vscode").lazy_load()
 
 -- Base mappings
@@ -60,12 +58,13 @@ local mappings = {
 }
 
 cmp.setup({
-   sources = {
+   sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "buffer" },
       { name = "luasnip" },
-      { name = "easy-dotnet" }
-   },
+      { name = "easy-dotnet" },
+      { name = "async_path" }
+   }),
    snippet = {
       expand = function(args)
          require("luasnip").lsp_expand(args.body)
@@ -90,12 +89,12 @@ cmp.setup.cmdline({ "/", "?" }, {
 cmp.setup.cmdline(":", {
    mapping = mappings,
    sources = cmp.config.sources(
-      {{name = "path"}}, {{
+      { { name = "path" } }, { {
          name = "cmdline",
          option = {
             ignore_cmds = { "Man", "!" }
          }
-      }}),
+      } }),
    ---@diagnostic disable-next-line: missing-fields
    matching = { disallow_symbol_nonprefix_matching = false }
 })
@@ -118,52 +117,52 @@ local autopairs = require("nvim-autopairs.completion.cmp")
 
 local autopairs_on_confirm_done = autopairs.on_confirm_done()
 cmp.event:on("confirm_done", function(event)
-  local entry = event.entry
-  local item = entry:get_completion_item()
+   local entry = event.entry
+   local item = entry:get_completion_item()
 
-  local command = item.command
-  if not command or command.command ~= "roslyn.client.completionComplexEdit" then
-    -- Not a Roslyn complex edit -- let autopairs handle it as normal.
-    autopairs_on_confirm_done(event)
-    return
-  end
+   local command = item.command
+   if not command or command.command ~= "roslyn.client.completionComplexEdit" then
+      -- Not a Roslyn complex edit -- let autopairs handle it as normal.
+      autopairs_on_confirm_done(event)
+      return
+   end
 
-  -- The edit payload lives somewhere in command.arguments. Find the
-  -- argument that actually looks like a TextEdit (has range + newText),
-  -- rather than hardcoding an index, since the position may not be stable
-  -- across Roslyn versions.
-  local edit
-  for _, arg in ipairs(command.arguments or {}) do
-    if type(arg) == "table" and arg.range and arg.newText ~= nil then
-      edit = arg
-      break
-    end
-  end
+   -- The edit payload lives somewhere in command.arguments. Find the
+   -- argument that actually looks like a TextEdit (has range + newText),
+   -- rather than hardcoding an index, since the position may not be stable
+   -- across Roslyn versions.
+   local edit
+   for _, arg in ipairs(command.arguments or {}) do
+      if type(arg) == "table" and arg.range and arg.newText ~= nil then
+         edit = arg
+         break
+      end
+   end
 
-  if not edit then
-    vim.notify(
-      "[roslyn complex edit] command fired but no TextEdit-shaped argument found",
-      vim.log.levels.WARN
-    )
-    return
-  end
+   if not edit then
+      vim.notify(
+         "[roslyn complex edit] command fired but no TextEdit-shaped argument found",
+         vim.log.levels.WARN
+      )
+      return
+   end
 
-  local bufnr = entry.context and entry.context.bufnr or vim.api.nvim_get_current_buf()
+   local bufnr = entry.context and entry.context.bufnr or vim.api.nvim_get_current_buf()
 
-  -- Apply the real edit. This is a standard LSP TextEdit, so we can use
-  -- nvim's built-in applier directly.
-  vim.lsp.util.apply_text_edits({ edit }, bufnr, "utf-16")
+   -- Apply the real edit. This is a standard LSP TextEdit, so we can use
+   -- nvim's built-in applier directly.
+   vim.lsp.util.apply_text_edits({ edit }, bufnr, "utf-16")
 
-  -- Move the cursor to the end of the inserted text, since apply_text_edits
-  -- doesn't do this for us and cmp's own (empty) insert already left the
-  -- cursor in roughly the right spot, but let's be precise about it.
-  local lines = vim.split(edit.newText, "\n", { plain = true })
-  local end_line = edit.range.start.line + (#lines - 1)
-  local end_col
-  if #lines == 1 then
-    end_col = edit.range.start.character + #lines[1]
-  else
-    end_col = #lines[#lines]
-  end
-  vim.api.nvim_win_set_cursor(0, { end_line + 1, end_col })
+   -- Move the cursor to the end of the inserted text, since apply_text_edits
+   -- doesn't do this for us and cmp's own (empty) insert already left the
+   -- cursor in roughly the right spot, but let's be precise about it.
+   local lines = vim.split(edit.newText, "\n", { plain = true })
+   local end_line = edit.range.start.line + (#lines - 1)
+   local end_col
+   if #lines == 1 then
+      end_col = edit.range.start.character + #lines[1]
+   else
+      end_col = #lines[#lines]
+   end
+   vim.api.nvim_win_set_cursor(0, { end_line + 1, end_col })
 end)
