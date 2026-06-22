@@ -43,7 +43,7 @@ vim.keymap.set('i', ';', function()
    local next_char = line:sub(col + 1, col + 1)
 
    if next_char == ')' then
-      return '<Right>;'
+      return '<Right>;' -- Also return to normal mode
    else
       return ';'
    end
