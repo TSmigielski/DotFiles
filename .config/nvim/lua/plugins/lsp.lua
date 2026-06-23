@@ -64,6 +64,15 @@ return {
             virtual_lines = true
          })
          require("lsp_lines").setup()
-      end
+      end,
+      keys = {
+         {
+            "<Leader>u",
+            function()
+               require("lsp_lines").toggle()
+            end,
+            desc = "Toggle LSP lines"
+         }
+      }
    }
 }
