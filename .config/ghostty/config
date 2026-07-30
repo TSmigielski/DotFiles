@@ -7,3 +7,5 @@ window-new-tab-position = end
 focus-follows-mouse = true
 
 keybind = ctrl+enter=unbind
+keybind = ctrl+shift+j=unbind
+keybind = ctrl+shift+k=unbind
