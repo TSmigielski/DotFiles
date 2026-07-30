@@ -7,19 +7,23 @@
     separator_color = auto
     idle_threshold = 200
     markup = yes
-    format = "<b>%s %p</b>\n%b\n%p"
+    format = "<b>%s</b>\n%b"
     alignment = center
     dmenu = /usr/bin/rofi -dmenu -p dunst:
+    icon_theme = "Nordzy-cyan-dark"
+    enable_recursive_icon_lookup = true
+    min_icon_size = 24
 
-    background = "#2E3440DD"
-    foreground = "#D8DEE9"
+    background = "#2e3440dd"
+    foreground = "#d8dee9"
+    highlight = "#8fbcbb"
 
 
 [urgency_low]
     frame_color = "#bec8da"
 
 [urgency_normal]
-    frame_color = "#6889b1"
+    frame_color = "#5e81ac"
 
 [urgency_critical]
     frame_color = "#c84141"
