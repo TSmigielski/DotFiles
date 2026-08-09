@@ -12,10 +12,6 @@ vim.keymap.set("n", "<A-j>", "<C-w>j")
 vim.keymap.set("n", "<A-k>", "<C-w>k")
 vim.keymap.set("n", "<A-l>", "<C-w>l")
 
--- Keep the screen centered when using these motions
-vim.keymap.set("n", "<C-d>", "M<C-d>")
-vim.keymap.set("n", "<C-u>", "M<C-u>")
-
 -- Move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", Desc("Move selected text down a line"))
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", Desc("Move selected text up a line"))

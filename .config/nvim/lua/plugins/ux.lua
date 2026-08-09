@@ -53,12 +53,6 @@ return {
    },
 
    {
-      "mluders/comfy-line-numbers.nvim",
-      event = { "BufReadPre", "BufNewFile" },
-      config = true
-   },
-
-   {
       "ysmb-wtsg/in-and-out.nvim",
       keys = {
          {
