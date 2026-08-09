@@ -28,7 +28,10 @@ hl.window_rule({
       "min(cursor_x+50, monitor_w-window_w-50)",
       "min(cursor_y+50, monitor_h-window_h-50)"
    },
-   max_size = { 1600, 900 }
+   max_size = {
+      "monitor_w-300",
+      "monitor_h-300"
+   }
 })
 
 -- Tag assignements
