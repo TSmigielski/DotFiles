@@ -17,18 +17,21 @@ hl.window_rule({
    opacity = 1
 })
 
--- Remember floating window size,
+-- Floating window tweaks
 hl.window_rule({
    name = "FloatingWindows",
    match = {
       float = true
    },
    persistent_size = true,
-   move = "cursor_x+50 cursor_y+50",
-   max_size = {1600, 900}
+   move = {
+      "min(cursor_x+50, monitor_w-window_w-50)",
+      "min(cursor_y+50, monitor_h-window_h-50)"
+   },
+   max_size = { 1600, 900 }
 })
 
--- Tag assignements,
+-- Tag assignements
 hl.window_rule({
    name = "ContextMenuUpgrade",
    tag = "+contextMenu",
@@ -89,7 +92,7 @@ hl.window_rule({
    float = true
 })
 
--- Workspace assignements,
+-- Workspace assignements
 hl.window_rule({
    name = "Brave",
    workspace = 6,
@@ -106,7 +109,7 @@ hl.window_rule({
    }
 })
 
--- Other,
+-- Other
 hl.window_rule({
    name = "PcManFmFloat",
    match = {
@@ -131,6 +134,6 @@ hl.window_rule({
       initial_class = "brave-nngceckbapebfimnlniiiahkandclblb-Default"
    },
    float = true,
-   size = {480, 600},
+   size = { 480, 600 },
    move = "monitor_w-520 (monitor_h/2)-275"
 })
