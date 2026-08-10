@@ -1,8 +1,8 @@
 hl.curve("spring", {
    type = "spring",
    mass = 1,
-   stiffness = 200,
-   dampening = 25
+   stiffness = 210,
+   dampening = 24
 })
 
 hl.animation({
