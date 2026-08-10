@@ -35,17 +35,3 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FocusLost" }, {
       vim.wo.cursorline = false
    end
 })
-
--- Insert `;` after `)` or `")`, and return to normal mode.
-vim.keymap.set('i', ';', function()
-   local line = vim.api.nvim_get_current_line()
-   local col = vim.api.nvim_win_get_cursor(0)[2]
-
-   if line:sub(col + 1, col + 2) == '")' then
-      return '<Right><Right>;'
-   elseif line:sub(col + 1, col + 1) == ')' then
-      return '<Right>;'
-   else
-      return ';'
-   end
-end, { expr = true, noremap = true })
