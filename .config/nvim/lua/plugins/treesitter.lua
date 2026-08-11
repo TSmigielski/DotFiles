@@ -1,7 +1,14 @@
 return {
    {
+      "nvim-treesitter/nvim-treesitter",
+      branch = "main",
+      event = { "BufReadPre", "BufNewFile" },
+      config = true
+   },
+
+   {
       "romus204/tree-sitter-manager.nvim",
-      event = { "BufReadPre", "BufNewFile" }, -- For the auto install
+      event = { "BufReadPre", "BufNewFile" },
       opts = {
          auto_install = true
       }

@@ -18,6 +18,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
    pattern = "*",
 })
 
+-- Treesitter-based indentation (falls back to normal indenting on filetypes without a parser)
+vim.api.nvim_create_autocmd("FileType", {
+   pattern = "*",
+   callback = function()
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+   end
+})
+
 -- Auto-show/hide cursorline on window enter/exit
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FocusGained" }, {
