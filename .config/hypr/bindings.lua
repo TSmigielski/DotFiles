@@ -1,3 +1,5 @@
+hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd("ags request toggle-menu"), { release = true })
+
 hl.bind("SUPER + " .. Left, hl.dsp.focus({direction = "left"}))
 hl.bind("SUPER + " .. Right, hl.dsp.focus({direction = "right"}))
 hl.bind("SUPER + " .. Up, hl.dsp.focus({direction = "up"}))
