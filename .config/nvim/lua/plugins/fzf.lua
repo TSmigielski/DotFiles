@@ -31,9 +31,16 @@ return {
          desc = "FZF resume"
       },
       {
-         "<Leader>a",
+         "<Leader>F",
          ":FzfLua<Cr>",
          desc = "FZF picker select"
-      }
+      },
+      {
+         "<Leader>o",
+         function()
+            require("fzf-lua").oldfiles()
+         end,
+         desc = "FZF old files"
+      },
    }
 }
