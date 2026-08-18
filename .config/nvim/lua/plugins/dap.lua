@@ -2,7 +2,25 @@ return {
    {
       "mfussenegger/nvim-dap",
       dependencies = {
-         "igorlfs/nvim-dap-view"
+         {
+            "igorlfs/nvim-dap-view",
+            opts = {
+               winbar = {
+                  default_section = "scopes"
+               },
+               windows = {
+                  terminal = {
+                     hide = true
+                  }
+               },
+               virtual_text = {
+                  enabled = true
+               }
+            },
+            keys = {
+               {"<Leader>k", ":DapViewHover<CR>", desc = "Toggle DAP view hover"}
+            }
+         }
       },
       config = function()
          local dap, dapview = require("dap"), require("dap-view")
