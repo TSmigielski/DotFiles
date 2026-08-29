@@ -6,7 +6,7 @@ hl.window_rule({
    },
    no_blur = true,
    rounding = 0,
-   opacity = 1
+   opacity = "1 override"
 })
 
 hl.window_rule({
@@ -14,7 +14,8 @@ hl.window_rule({
    match = {
       tag = "noOpacity"
    },
-   opacity = 1
+   no_blur = true,
+   opacity = "1 override"
 })
 
 -- Floating window tweaks
