@@ -68,7 +68,6 @@ hl.config({
          scroll_factor = .2
       },
 
-      sensitivity = .1,
       accel_profile = "flat",
       repeat_delay = 280,
       repeat_rate = 30
