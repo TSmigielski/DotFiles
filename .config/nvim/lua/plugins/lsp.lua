@@ -21,10 +21,41 @@ return {
    {
       "L3MON4D3/LuaSnip",
       event = "InsertEnter",
-      dependencies = {
-         "rafamadriz/friendly-snippets"
-      },
-      build = "make install_jsregexp"
+      build = "make install_jsregexp",
+      config = function()
+         local luasnip = require("luasnip")
+         luasnip.add_snippets("cs", require("snippets.cs"))
+      end,
+      keys = {
+         {
+            "<Tab>",
+            function()
+               local luasnip = require("luasnip")
+               if luasnip.jumpable(1) then
+                  luasnip.jump(1)
+               elseif vim.fn.mode() == "i" then
+                  return "<Tab>"
+               end
+            end,
+            desc = "Jump to next snippet part",
+            mode = { "n", "i", "v" },
+            expr = true
+         },
+         {
+            "<S-Tab>",
+            function()
+               local luasnip = require("luasnip")
+               if luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
+               elseif vim.fn.mode() == "i" then
+                  return "<BS>"
+               end
+            end,
+            desc = "Jump to previous snippet part",
+            mode = { "n", "i", "v" },
+            expr = true
+         }
+      }
    },
 
    {

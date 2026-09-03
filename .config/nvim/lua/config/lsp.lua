@@ -43,18 +43,26 @@ vim.api.nvim_set_hl(0, "@lsp.type.recordClass.cs", { link = "@type" })
 
 -- CMP --
 local cmp = require("cmp")
-require("luasnip.loaders.from_vscode").lazy_load()
+local luasnip = require("luasnip")
 
 -- Base mappings
 local mappings = {
    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = "select" }), { "i", "c" }),
    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = "select" }), { "i", "c" }),
-   ["<Tab>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
    ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
    ["<C-q>"] = cmp.mapping(cmp.mapping.close_docs(), { "i", "c" }),
    ["<CS-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-   ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
+   ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+   ["<Tab>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(1) then
+         luasnip.jump(1)
+      elseif cmp.visible() then
+         cmp.confirm()
+      else
+         fallback()
+      end
+   end, { "i", "c" })
 }
 
 cmp.setup({
