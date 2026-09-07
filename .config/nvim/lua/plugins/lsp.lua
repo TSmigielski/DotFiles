@@ -31,9 +31,10 @@ return {
             "<Tab>",
             function()
                local luasnip = require("luasnip")
+               local mode = vim.fn.mode()
                if luasnip.jumpable(1) then
                   luasnip.jump(1)
-               elseif vim.fn.mode() == "i" then
+               elseif mode == "i" or mode == "n" then
                   return "<Tab>"
                end
             end,
