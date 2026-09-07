@@ -44,18 +44,7 @@ fi
 
 
 ### Env ###
-export PATH=$PATH:~/.local/bin:~/.dotnet/tools:~/.yarn/bin:~/.cargo/bin:~/.symfony5/bin
-export EDITOR=nvim
-export VISUAL=nvim
-export MANPAGER="nvim +Man!"
 export KEYTIMEOUT=1
-export TERM=xterm-256color
-export DOTNET_CLI_UI_LANGUAGE=en
-export DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION=1
-export SSL_CERT_DIR=$HOME/.aspnet/dev-certs/trust:/etc/ssl/certs
-export DOCKER_HOST=unix:///var/run/docker.sock
-export NUGET_PACKAGES=/mnt/data/Cache/Nuget/Packages
-
 
 ### Aliases ###
 # Git
