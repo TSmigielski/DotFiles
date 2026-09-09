@@ -42,5 +42,12 @@ return {
          end,
          desc = "FZF old files"
       },
+      {
+         "<Leader>s",
+         function()
+            require("fzf-lua").lsp_document_symbols()
+         end,
+         desc = "FZF LSP document symbols"
+      }
    }
 }
