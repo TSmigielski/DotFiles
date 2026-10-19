@@ -19,7 +19,9 @@ return {
          ["low"] = "high",
          ["show"] = "hide",
          ["open"] = "close",
-         ["private"] = "public"
+         ["private"] = "public",
+         ["north"] = "south",
+         ["east"] = "west"
       }
    }
 }
