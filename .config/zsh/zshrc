@@ -33,6 +33,33 @@ function y() {
    rm -f -- "$tmp"
 }
 
+# Completions
+fpath=(
+   ~/.local/share/zsh/site-functions/
+   $fpath
+)
+autoload -Uz compinit
+compinit
+
+# Dotnet
+eval "$(dotnet completions script zsh)"
+_dotnet_zsh_complete()
+{
+  local completions=("$(dotnet complete "$words")")
+
+  # If the completion list is empty, just continue with filename selection
+  if [ -z "$completions" ]
+  then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+
+  # This is not a variable assignment, don't remove spaces!
+  _values = "${(ps:\n:)completions}"
+}
+
+compdef _dotnet_zsh_complete dotnet
+
 # Misc
 setopt auto_cd
 WORDCHARS=
@@ -41,6 +68,14 @@ WORDCHARS=
 if [[ -r /usr/share/nvm/init-nvm.sh ]]; then
    source /usr/share/nvm/init-nvm.sh
 fi
+
+# rbw helper
+rbf() {
+  local name
+  name=$(rbw list | fzf --prompt="Vault > ")
+  [ -n "$name" ] && rbw get "$name" | tr -d '\n' | wl-copy
+  echo "Copied: $name"
+}
 
 
 ### Env ###
