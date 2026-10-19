@@ -3,15 +3,15 @@ Down = "j"
 Up = "k"
 Right = "l"
 
--- XWayland apps fix
 hl.on("hyprland.start", function()
+   -- XWayland apps fix
    hl.exec_cmd("xrdb ~/.config/hypr/xresources")
+
+   -- Hand PAM credentials to ksecretd so kwallet unlocks on login
+   hl.exec_cmd("/usr/lib/pam_kwallet_init")
 end)
 
 require("bindings")
 require("monitors")
 require("settings")
 require("windowRules")
-
--- Workaround https://github.com/omacom/omarchy/issues/15793
-hl.env("GDK_WAYLAND_DISABLE", "ext_background_effect_manager_v1")
