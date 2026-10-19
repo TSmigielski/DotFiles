@@ -12,3 +12,6 @@ require("bindings")
 require("monitors")
 require("settings")
 require("windowRules")
+
+-- Workaround https://github.com/omacom/omarchy/issues/15793
+hl.env("GDK_WAYLAND_DISABLE", "ext_background_effect_manager_v1")

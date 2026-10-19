@@ -10,20 +10,20 @@
     format = "<b>%s</b>\n%b"
     alignment = center
     dmenu = /usr/bin/rofi -dmenu -p dunst:
-    icon_theme = "Nordzy-cyan-dark"
+    icon_theme = "breeze-dark"
     enable_recursive_icon_lookup = true
     min_icon_size = 24
 
-    background = "#2e3440dd"
-    foreground = "#d8dee9"
-    highlight = "#8fbcbb"
+    background = "#222226"
+    foreground = "#fff"
+    highlight = "#1d87dd"
 
 
 [urgency_low]
-    frame_color = "#bec8da"
+    frame_color = "#1d87dd"
 
 [urgency_normal]
-    frame_color = "#5e81ac"
+    frame_color = "#a52ed4"
 
 [urgency_critical]
     frame_color = "#c84141"

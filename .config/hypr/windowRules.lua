@@ -138,6 +138,6 @@ hl.window_rule({
       initial_class = "brave-nngceckbapebfimnlniiiahkandclblb-Default"
    },
    float = true,
-   size = { 480, 600 },
+   size = { 480, 620 },
    move = "monitor_w-520 (monitor_h/2)-275"
 })

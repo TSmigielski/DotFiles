@@ -7,4 +7,4 @@ configuration {
     me-select-entry: "";
     me-accept-entry: "MousePrimary";
 }
-@theme "/usr/share/rofi/themes/nord.rasi"
+@theme "theme.rasi"

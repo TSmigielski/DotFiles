@@ -76,7 +76,6 @@ hl.config({
    misc = {
       force_default_wallpaper = 0,
       disable_hyprland_logo = true,
-      -- float_force_onscreen = 1,
-      vrr = 2 -- Freesync (full-screen only)
+      vrr = 1
    }
 })
