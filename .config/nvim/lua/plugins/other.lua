@@ -68,10 +68,6 @@ return {
             lsp = true
          }
       },
-      config = function(plugin, opts)
-         vim.opt.termguicolors = true;
-         require("ccc").setup(opts)
-      end,
       keys = {
          { "<Leader>c", ":CccPick<Cr>", desc = "Color picker" }
       }

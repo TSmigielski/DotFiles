@@ -11,6 +11,7 @@ vim.opt.shiftwidth = 0
 vim.opt.expandtab = true
 
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.smartindent = true
 
 vim.opt.swapfile = false
@@ -22,7 +23,7 @@ vim.opt.scrolloff = 12
 vim.opt.sidescrolloff = 16
 vim.opt.isfname:append "@-@"
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 vim.opt.termguicolors = true
 
 vim.opt.breakindent = true
@@ -31,3 +32,5 @@ vim.opt.completeopt = "menuone,noselect"
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.opt.winborder = "rounded" -- Default border for floating windows

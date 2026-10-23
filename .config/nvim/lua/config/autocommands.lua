@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
    pattern = { "*" },
    callback = function()
       if (vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$")) then
-         vim.api.nvim_exec("normal! g'\"", false)
+         vim.cmd("normal! g'\"")
       end
    end
 })
@@ -12,17 +12,19 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
    callback = function()
-      vim.highlight.on_yank()
+      vim.hl.on_yank()
    end,
    group = highlight_group,
    pattern = "*",
 })
 
--- Treesitter-based indentation (falls back to normal indenting on filetypes without a parser)
+-- Treesitter-based indentation (only where a parser exists, so filetypes without one keep their own indent rules)
 vim.api.nvim_create_autocmd("FileType", {
    pattern = "*",
-   callback = function()
-      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+   callback = function(event)
+      if vim.treesitter.get_parser(event.buf, nil, { error = false }) then
+         vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
    end
 })
 

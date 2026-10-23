@@ -32,7 +32,7 @@ return {
             function()
                local luasnip = require("luasnip")
                local mode = vim.fn.mode()
-               if luasnip.jumpable(1) then
+               if luasnip.locally_jumpable(1) then
                   luasnip.jump(1)
                elseif mode == "i" or mode == "n" then
                   return "<Tab>"
@@ -46,7 +46,7 @@ return {
             "<S-Tab>",
             function()
                local luasnip = require("luasnip")
-               if luasnip.jumpable(-1) then
+               if luasnip.locally_jumpable(-1) then
                   luasnip.jump(-1)
                elseif vim.fn.mode() == "i" then
                   return "<BS>"
@@ -85,26 +85,5 @@ return {
             }
          end
       end
-   },
-
-   {
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      event = "LspAttach",
-      config = function(_, _)
-         vim.diagnostic.config({
-            virtual_text = false,
-            virtual_lines = true
-         })
-         require("lsp_lines").setup()
-      end,
-      keys = {
-         {
-            "<Leader>u",
-            function()
-               require("lsp_lines").toggle()
-            end,
-            desc = "Toggle LSP lines"
-         }
-      }
    }
 }

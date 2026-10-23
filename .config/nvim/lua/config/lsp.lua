@@ -13,6 +13,16 @@ vim.lsp.config("avalonia", {
 -- Non Mason managed servers
 vim.lsp.enable("avalonia")
 
+-- Show diagnostics as lines below the code instead of at the end of the line
+vim.diagnostic.config({
+   virtual_text = false,
+   virtual_lines = true
+})
+
+vim.keymap.set("n", "<Leader>u", function()
+   vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+end, { desc = "Toggle diagnostic lines" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
    desc = "LSP actions",
    callback = function(event)
@@ -22,7 +32,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, getOpts("Quick documentation"))
       vim.keymap.set("n", "<AS-k>", vim.diagnostic.open_float, getOpts("Diagnostics window"))
-      vim.keymap.set({ "n", "i" }, "<A-s>", vim.lsp.buf.signature_help, getOpts("Signature help"))
+      local signature_help = require("config.signature_help")
+      vim.keymap.set({ "n", "i" }, "<A-s>", signature_help.open, getOpts("Signature help"))
+      vim.keymap.set({ "n", "i" }, "<AS-l>", function() signature_help.cycle(1) end, getOpts("Next signature"))
+      vim.keymap.set({ "n", "i" }, "<AS-h>", function() signature_help.cycle(-1) end, getOpts("Previous signature"))
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, getOpts("Goto definition"))
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, getOpts("Goto declaration"))
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, getOpts("Goto implementation"))
@@ -55,7 +68,7 @@ local mappings = {
    ["<CS-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
    ["<CS-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
    ["<Tab>"] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(1) then
+      if luasnip.locally_jumpable(1) then
          luasnip.jump(1)
       elseif cmp.visible() then
          cmp.confirm()

@@ -1,7 +1,7 @@
 return {
    {
       -- Package manager for LSPs
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       cmd = "Mason",
       opts = {
          registries = {
@@ -13,7 +13,7 @@ return {
 
    {
       -- Automatically enables all installed LSPs
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       event = { "BufReadPre", "BufNewFile" },
       config = true
    }
